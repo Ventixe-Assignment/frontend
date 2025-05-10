@@ -32,6 +32,27 @@
     --darkest-blue: #1C2346;
     --light-yellow: #FFEFC3;
     --yellow: #FFCA39;
+    --transparent: #ffffff00;
+    --original-gray-shade-1: #FFFFFF;
+    --original-gray-shade-2: #F7F7F7;
+    --original-gray-shade-3: #EDEDED;
+    --original-gray-shade-4: #E0E0E1;
+    --original-gray-shade-5: #C3C3C4;
+    --original-gray-shade-6: #9F9FA1;
+    --original-gray-shade-7: #777779;
+    --original-gray-shade-8: #636365;
+    --original-gray-shade-9: #434345;
+    --original-gray-shade-10: #1E1E20;
+    --soft-blue-gray-shade-1: #EEEFFF;
+    --soft-blue-gray-shade-2: #E4E5F5;
+    --soft-blue-gray-shade-3: #DDDEED;
+    --soft-blue-gray-shade-4: #D1D2E0;
+    --soft-blue-gray-shade-5: #B0B1BD;
+    --soft-blue-gray-shade-6: #8F8F99;
+    --soft-blue-gray-shade-7: #72737A;
+    --soft-blue-gray-shade-8: #56565C;
+    --soft-blue-gray-shade-9: #39393D;
+    --soft-blue-gray-shade-10: #131314;
 
     /*VARIABLES TO CHANGE*/
     --primary-30: var(--light-pink);
@@ -47,6 +68,29 @@
     --secondary-110: var(--darkest-blue);
     --yellow-90: var(--light-yellow);
     --yellow-100: var(--yellow);
+    --gray-10: var(--original-gray-shade-1);
+    --gray-20: var(--original-gray-shade-2);
+    --gray-30: var(--original-gray-shade-3);
+    --gray-40: var(--original-gray-shade-4);
+    --gray-50: var(--original-gray-shade-5);
+    --gray-60: var(--original-gray-shade-6);
+    --gray-70: var(--original-gray-shade-7);
+    --gray-80: var(--original-gray-shade-8);
+    --gray-90: var(--original-gray-shade-9);
+    --gray-100: var(--original-gray-shade-10);
+    --cool-gray-10: var(--soft-blue-gray-shade-1);
+    --cool-gray-20: var(--soft-blue-gray-shade-2);
+    --cool-gray-30: var(--soft-blue-gray-shade-3);
+    --cool-gray-40: var(--soft-blue-gray-shade-4);
+    --cool-gray-50: var(--soft-blue-gray-shade-5);
+    --cool-gray-60: var(--soft-blue-gray-shade-6);
+    --cool-gray-70: var(--soft-blue-gray-shade-7);
+    --cool-gray-80: var(--soft-blue-gray-shade-8);
+    --cool-gray-90: var(--soft-blue-gray-shade-9);
+    --cool-gray-100: var(--soft-blue-gray-shade-10);
+    --heading-color: var(--original-gray-shade-10);
+    --background-color: var(--original-gray-shade-1);
+    --card-background-color: var(--original-gray-shade-2);
 }
 .dark {}
 html, body {
@@ -54,10 +98,103 @@ html, body {
     font-size: 1rem;
     font-family: var(--font);
     font-weight: var(--font-regular);
-    color: var(--bodyDark);
+    color: var(--heading-color);
     background-color: var(--background-color);
 }
+/* TYPOGRAPHY */
+h1 {
+    font-size: 2rem;
+    font-weight: var(--font-bold)
+}
+h2 {
+    font-size: 1.75rem;
+    font-weight: var(--font-bold)
+}
+h3 {
+    font-size: 1.625rem;
+    font-weight: var(--font-bold)
+}
+h4 {
+    font-size: 1.5rem;
+    font-weight: var(--font-semibold)
+}
+h5 {
+    font-size: 1.375rem;
+    font-weight: var(--font-semibold)
+}
+h6 {
+    font-size: 1.25rem;
+    font-weight: var(--font-semibold)
+}
+.title-medium-18 {
+    font-size: 1.125rem;
+    font-weight: var(--font-medium);
+}
+.title-semibold-18 {
+    font-size: 1.125rem;
+    font-weight: var(--font-semibold);
+}
+.title-bold-18 {
+    font-size: 1.125rem;
+    font-weight: var(--font-bold);
+}
+.title-regular-16 {
+    font-size: 1rem;
+    font-weight: var(--font-regular);
+}
+.title-medium-16 {
+    font-size: 1rem;
+    font-weight: var(--font-medium);
+}
+.title-semibold-16 {
+    font-size: 1rem;
+    font-weight: var(--font-semibold);
+}
+.title-bold-16 {
+    font-size: 1rem;
+    font-weight: var(--font-bold);
+}
+.title-regular-12 {
+    font-size: .75rem;
+    font-weight: var(--font-regular);
+}
+.title-medium-12 {
+    font-size: .75rem;
+    font-weight: var(--font-medium);
+}
+.title-semibold-12 {
+    font-size: .75rem;
+    font-weight: var(--font-semibold);
+}
+.title-bold-12 {
+    font-size: .75rem;
+    font-weight: var(--font-bold);
+}
+input, button, label {
+    color: var(--gray-100);
+    font: inherit;
+}
+i {
+    background-color: var(--transparent);
+}
+li {
+    list-style: none;
+}
+.text-line::before,
+.text-line::after {
+    content: "";
+    flex: 1;
+    border-bottom: 2px solid var(--primary-100);
+    margin: 1rem;
+}
+.divider {
+    border-top: 1px solid var(--primary-100);
+}
+.divider-verticle:after {
+    content: "";
+    border-right: 1px solid var(--primary-100);
 
+}
 /* STRUCTURE */
 .center-wrapper {
     display: flex;
