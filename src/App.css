@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 /*BASE*/
 *,*::before, *::after {
     margin: 0;
@@ -7,8 +8,7 @@
 }
 :root {
     /*FONTS*/
-    --font: "Nunito", "sans-serif";
-    --font-logo: "Comfortaa", "sans-serif";
+    --font: "Inter", "sans-serif";
     --font-bootstrap: 'bootstrap-icons';
     --font-regular: 400;
     --font-medium: 500;
@@ -16,13 +16,37 @@
     --font-bold: 700;
     --font-extrabold: 800;
     --font-black: 900;
+
     /*BORDERS*/
     /*COLORS*/
-    /*MISC*/
-    /*VARIABLES TO CHANGE*/
-    --bodyLight: var(--lightGrey);
-    --bodyDark: var(--darkGrey);
+    --light-pink:#FDEDFE;
+    --lightmedium-pink:#FCE2FE;
+    --medium-pink:#FCD3FE;
+    --mediumdark-pink:#F589FA;
+    --dark-pink:#F26CF9;
+    --light-blue: #D3DAF9;
+    --mediumlight-blue: #ABB4DD;
+    --medium-blue: #707DBF;
+    --mediumdark-blue: #5562A2;
+    --dark-blue: #37437D;
+    --darkest-blue: #1C2346;
+    --light-yellow: #FFEFC3;
+    --yellow: #FFCA39;
 
+    /*VARIABLES TO CHANGE*/
+    --primary-30: var(--light-pink);
+    --primary-40: var(--lightmedium-pink);
+    --primary-50: var(--medium-pink);
+    --primary-90: var(--mediumdark-pink);
+    --primary-100: var(--dark-pink);
+    --secondary-50: var(--light-blue);
+    --secondary-60: var(--mediumlight-blue);
+    --secondary-70: var(--medium-blue);
+    --secondary-90: var(--mediumdark-blue);
+    --secondary-100: var(--dark-blue);
+    --secondary-110: var(--darkest-blue);
+    --yellow-90: var(--light-yellow);
+    --yellow-100: var(--yellow);
 }
 .dark {}
 html, body {
