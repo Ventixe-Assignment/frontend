@@ -10,9 +10,10 @@ const Nav = () => {
           <h4 className='logotype'>Ventixe</h4>
       </div>
       <h4 className='header-title'>Title Title</h4>
-      <button className='btn btn-menu'>
+      <button className='btn-nav-menu' id='nav-menu'>
           <i class="bi bi-list"></i>
       </button>
+
       <div className='nav-links'>
         <NavLink to="/events">
           <div className='nav-link'>
@@ -30,6 +31,12 @@ const Nav = () => {
           <div className='nav-link'>
             <i class="bi bi-receipt"></i>
             <p>Invoice</p>
+          </div>
+        </NavLink>
+        <NavLink to="/logout">
+            <div className='nav-link' id='logout-button'>
+            <i class="bi bi-box-arrow-right"></i>
+            <p>Logout</p>
           </div>
         </NavLink>
       </div>

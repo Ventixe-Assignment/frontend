@@ -9,8 +9,11 @@ const Header = () => {
       </div>
       <div className='header-right'>
         <div className='input-search'>
-          <input type='search' placeholder='Search here' />
+            <input type='search' placeholder='Search here' />
         </div>
+        <button className='btn btn-blue' id='search-button'>
+          <i class="bi bi-search"></i>
+        </button>
         <button className='btn btn-blue'>
           <i class="bi bi-bell"></i>
         </button>

@@ -260,8 +260,7 @@ nav {
     nav {
         display: grid;
     }
-    nav h4,
-    nav .btn-menu
+    nav h4
     {
         display: none;
     }
@@ -318,6 +317,24 @@ footer {
     i {
         color: var(--gray-10);
     }
+    &:hover,
+    &:active {
+        background-color: var(--primary-100);
+    }
+}
+.btn-nav-menu {
+    border:none;
+    background-color: var(--transparent);
+    padding: .5rem;
+    cursor: pointer;
+
+    i {
+        font-size: 1.5rem;
+        &:hover,
+        &:active {
+            color: var(--primary-100);
+        }
+    }
 }
 /* BADGES */
 
@@ -352,24 +369,26 @@ footer {
         font-weight: var(--font-semibold);
     }
 }
+#logout-button {
+    position: absolute;
+    bottom: 0;
+}
 @media(width >= 768px) {
     nav {
         display: block;
     }
-    nav h4,
-    nav .btn-menu
-    {
-        display: none;
-    }
     .logo-container {
         justify-content: center;
+    }
+    #nav-menu {
+        display: none;
     }
     .nav-links {
         display: block;
     }
     .nav-link i {
         display: flex;
-}
+    }
 }
 @media(width >= 1400px){
     .logo-container {
@@ -394,15 +413,17 @@ footer {
     justify-content: center;
     gap: 1rem;
 }
-
+.header-right .input-search{
+    display: none;
+}
 .profile-container {
     display: flex;
     align-items: center;
     gap: .5rem;
 }
 .profile-container img{
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     border-radius: .8rem;
 }
 .profile-container .profile-name{
@@ -412,4 +433,12 @@ footer {
 .profile-container .profile-role{
     font-size: 12px;
     color:var(--gray-70);
+}
+@media(width >= 1400px){
+    .header-right .input-search{
+    display: block;
+    }
+    #search-button {
+        display: none;
+    }
 }
