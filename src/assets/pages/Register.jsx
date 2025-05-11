@@ -8,39 +8,33 @@ const Register = () => {
       <form method="post" novalidate enctype="multipart/form-data">
           <div className="shrink">
               <div className="input-group">
-                  <label className="form-label">First name</label>
-                  <input className="form-input"/>
-                  <span asp-validation-for="FirstName"></span>
+                  <label className="form-label">First Name</label>
+                  <input className="form-input" />
               </div>
               <div className="input-group">
-                  <label asp-for="LastName" className="form-label"></label>
-                  <input asp-for="LastName" className="form-input" value="@Model?.LastName"/>
-                  <span asp-validation-for="LastName"></span>
+                  <label className="form-label">Last Name</label>
+                  <input className="form-input" />
               </div>
           </div>
 
           <div className="input-group">
-              <label asp-for="Email" className="form-label"></label>
-              <input asp-for="Email" className="form-input" value="@Model?.Email"/>
-              <span asp-validation-for="Email"></span>
+              <label className="form-label">Email</label>
+              <input className="form-input" />
           </div>
 
           <div className="shrink">
               <div className="input-group">
-                  <label asp-for="Password" className="form-label"></label>
-                  <input asp-for="Password" className="form-input" value="@Model?.Password"/>
-                  <span asp-validation-for="Password"></span>
+                  <label className="form-label">Password</label>
+                  <input className="form-input" />
               </div>
               <div className="input-group">
-                  <label asp-for="ConfirmPassword" className="form-label"></label>
-                  <input asp-for="ConfirmPassword" className="form-input" value="@Model?.ConfirmPassword"/>
-                  <span asp-validation-for="ConfirmPassword"></span>
+                  <label className="form-label">Confirm Password</label>
+                  <input className="form-input" />
               </div>
           </div>
 
           <div className="terms">
-              <input asp-for="AcceptTerms" type="checkbox"/> <span>I accept</span> <a asp-action="#">Terms and Conditions</a>
-              <span asp-validation-for="AcceptTerms"></span>
+              <input type="checkbox"/> <span>I accept</span> <a asp-action="#">Terms and Conditions</a>
           </div>
 
           <button type="submit" className="btn btn-register-login">Create Account</button>

@@ -210,7 +210,8 @@ a {
     color: var(--cool-gray-70);
     cursor: pointer;
 }
-a:hover {
+a:hover,
+a:active {
     color: var(--primary-90);
     transition: all .3s;
 }
@@ -245,7 +246,7 @@ span {
 }
 /* STRUCTURE */
 .center-wrapper {
-    background-color: var(--cool-gray-50);
+    background-color: var(--cool-gray-20);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -253,6 +254,7 @@ span {
 
     main {
         width: 95%;
+        border: 1px solid var(--primary-50);
     }
     @media(width >= 768px){
     main {
