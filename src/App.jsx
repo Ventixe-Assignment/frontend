@@ -9,7 +9,7 @@ import CenterLayout from './assets/layouts/CenterLayout'
 function App() {
   return (
     <Routes>
-      <Route element={<PortalLayout/>} />
+      <Route path='/' element={<PortalLayout/>} />
     </Routes>
   )
 }
