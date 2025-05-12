@@ -41,7 +41,7 @@ const Register = () => {
       </form>
 
       <div className="account-already">
-          <p>Already have an account or Google-account?</p><a href='/login'>Login here</a>
+          <p>Already have an account or Google-account?</p><a href='/'>Login here</a>
       </div>
     </div>
   )

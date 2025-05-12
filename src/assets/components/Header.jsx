@@ -1,10 +1,15 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
+import titles from '../helpers/PageTitles'
 
 const Header = () => {
+  const location = useLocation()
+  const title = titles[location.pathname]
+
   return (
     <header>
       <div className='header-left'>
-        <h4 className='header-title'>TITLE</h4>
+        <h4 className='header-title'>{title}</h4>
         <p className='title-regular-12 header-welcome'>Welcome back dummy</p>
       </div>
       <div className='header-right'>

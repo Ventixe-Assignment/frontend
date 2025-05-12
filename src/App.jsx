@@ -12,12 +12,11 @@ function App() {
   return (
     <Routes>
       <Route element={<CenterLayout />}>
-        <Route path='/login' element={<Login />} />
+        <Route index element={<Login />} />
         <Route path='/register' element={<Register />} />
       </Route>
 
       <Route element={<PortalLayout />}>
-        <Route path='/' />
         <Route path='/events' element={<Events />} />
         <Route path='/bookings' element={<Bookings />}/>
         <Route path='/invoice' element={<Invoice />}/>

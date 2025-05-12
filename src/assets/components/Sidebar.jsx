@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 const Sidebar = ({isOpen, isActive}) => {
   return (
@@ -22,12 +22,12 @@ const Sidebar = ({isOpen, isActive}) => {
                 <p>Invoice</p>
             </div>
         </NavLink>
-        <NavLink to="/logout" >
+        <Link to="/logout" >
             <div className={`nav-link ${isActive? 'active' : ''}`} id='logout-button'>
                 <i className="bi bi-box-arrow-right"></i>
                 <p>Logout</p>
             </div>
-        </NavLink>
+        </Link>
     </div>
   )
 }

@@ -214,7 +214,6 @@ a.active * {
     color: var(--primary-90);
     transition: all .3s;
 }
-
 span {
     font: var(--font);
     font-size: 1rem;
@@ -294,16 +293,6 @@ nav {
     justify-content: space-between;
 
 }
-@media(width >= 768px) {
-    nav {
-        display: grid;
-    }
-    nav h4
-    {
-        display: none;
-    }
-}
-
 header {
     grid-area: header;
     padding: 1rem 2rem;
@@ -527,6 +516,9 @@ footer {
     }
     nav {
         display: block;
+    }
+    nav h4 {
+        display: none;
     }
     .logo-container {
         justify-content: center;
