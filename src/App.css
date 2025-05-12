@@ -503,22 +503,46 @@ footer {
         font-weight: var(--font-semibold);
     }
 }
-#logout-button {
+.nav-links.show {
+    display: inline-block;
     position: absolute;
-    bottom: 0;
+    margin: 0;
+    padding: 1rem;
+    top: 4rem;
+    right: 3.2rem;
+    width: 50%;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 10px var(--cool-gray-30);
+    z-index: 999;
 }
+.nav-links.show i,
+.nav-links.show p {
+    display: flex;
+}
+
 @media(width >= 768px) {
+    .nav-links.show {
+        display: none;
+    }
     nav {
         display: block;
     }
     .logo-container {
         justify-content: center;
     }
+    .nav-links {
+        display: block;
+        position: static;
+        backdrop-filter: none;
+        box-shadow: none;
+        width: auto;
+    }
     #nav-menu {
         display: none;
     }
-    .nav-links {
-        display: block;
+    #logout-button {
+    position: absolute;
+    bottom: 0;
     }
     .nav-link i {
         display: flex;
