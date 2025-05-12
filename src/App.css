@@ -210,10 +210,11 @@ a {
     cursor: pointer;
 }
 a:hover,
-a:active {
+a.active * {
     color: var(--primary-90);
     transition: all .3s;
 }
+
 span {
     font: var(--font);
     font-size: 1rem;
@@ -498,7 +499,7 @@ footer {
     p, i{
         display: none;
     }
-    &:hover {
+    &:hover{
         color: var(--primary-100);
         font-weight: var(--font-semibold);
     }

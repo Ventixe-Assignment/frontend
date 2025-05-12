@@ -3,8 +3,12 @@ import Sidebar from './Sidebar'
 
 const Nav = () => {
   const[isOpen, setIsOpen] = useState(false)
+  const[isActive, setIsActive] = useState(false)
   const toggleSidebar = () => {
     setIsOpen(!isOpen)
+  }
+  const toggleActive = () => {
+    setIsActive(!isActive)
   }
  
   return (
@@ -15,10 +19,10 @@ const Nav = () => {
       </div>
       <h4 className='header-title'>Title Title</h4>
       <button onClick={toggleSidebar} className='btn-nav-menu' id='nav-menu'>
-          <i class="bi bi-list"></i>
+          <i className="bi bi-list"></i>
       </button>
 
-      <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
+      <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} toggleActive={toggleActive}/>
       
     </nav>
   )
