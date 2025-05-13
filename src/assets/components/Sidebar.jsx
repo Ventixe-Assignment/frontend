@@ -4,6 +4,12 @@ import { Link, NavLink } from 'react-router-dom'
 const Sidebar = ({isOpen, isActive}) => {
   return (
     <div className={`nav-links ${isOpen? 'show' : ''}`}>
+        <NavLink to="/home" >
+            <div className={`nav-link ${isActive? 'active' : ''}`}>
+                <i className="bi bi-house"></i>
+                <p>Home</p>
+            </div>
+        </NavLink>
         <NavLink to="/events" >
             <div className={`nav-link ${isActive? 'active' : ''}`}>
                 <i className="bi bi-ticket-perforated"></i>

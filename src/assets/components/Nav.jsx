@@ -15,11 +15,11 @@ const Nav = () => {
   const toggleActive = () => {
     setIsActive(!isActive)
   }
- 
+
   return (
     <nav>
       <div className='logo-container'>
-          <img src='./logos/ventixe-logo.svg' />
+          <img src='/logos/ventixe-logo.svg' />
           <h4 className='logotype'>Ventixe</h4>
       </div>
       <h4 className='header-title'>{title}</h4>
@@ -28,7 +28,6 @@ const Nav = () => {
       </button>
 
       <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} toggleActive={toggleActive}/>
-      
     </nav>
   )
 }

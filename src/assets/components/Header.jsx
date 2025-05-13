@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <header>
       <div className='header-left'>
-        <h4 className='header-title'>{title}</h4>
+        <h4 className='header-title'>{title ?? 'Event Details'}</h4>
         <p className='title-regular-12 header-welcome'>Welcome back dummy</p>
       </div>
       <div className='header-right'>
@@ -17,13 +17,13 @@ const Header = () => {
             <input type='search' placeholder='Search here' />
         </div>
         <button className='btn btn-blue' id='search-button'>
-          <i class="bi bi-search"></i>
+          <i className="bi bi-search"></i>
         </button>
         <button className='btn btn-blue'>
-          <i class="bi bi-bell"></i>
+          <i className="bi bi-bell"></i>
         </button>
         <button className='btn btn-blue'>
-          <i class="bi bi-gear"></i>
+          <i className="bi bi-gear"></i>
         </button>
         <div className='profile-container'>
           <img src="/logos/ventixe-logo.svg"/>
