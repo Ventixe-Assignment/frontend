@@ -11,9 +11,9 @@ const EventProvider = ({children}) => {
     const getEvent = async (id) => {
         try {
             const res = await fetch(apiConnection + `/${id}`)
-            const data = await res.json()
+            const result = await res.json()
     
-            setEvent(data)
+            setEvent(result.data)
         }
         catch(error) {
             console.error('Error fetching a event', error)
@@ -26,8 +26,8 @@ const EventProvider = ({children}) => {
         const fetchData = async () => {
         try {
             const res = await fetch(apiConnection)
-            const data = await res.json()
-            setEvents(data)
+            const result = await res.json()
+            setEvents(result.data)
         } 
         catch(error) {
             console.error('Error fetching events', error)
