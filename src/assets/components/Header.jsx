@@ -10,7 +10,7 @@ const Header = () => {
     <header>
       <div className='header-left'>
         <h4 className='header-title'>{title ?? 'Event Details'}</h4>
-        <p className='title-regular-12 header-welcome'>Welcome back dummy</p>
+        <p className='title-regular-12 header-welcome'>{title === 'Home' ? 'Welcome back' : ' '}</p>
       </div>
       <div className='header-right'>
         <div className='input-search'>
