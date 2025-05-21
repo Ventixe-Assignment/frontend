@@ -5,7 +5,7 @@ const Register = () => {
     <div>
       <h1 className="create-account-title">Create Account</h1>
 
-      <form method="post" novalidate enctype="multipart/form-data">
+      <form method="post" noValidate enctype="multipart/form-data">
           <div className="shrink">
               <div className="input-group">
                   <label className="form-label">First Name</label>

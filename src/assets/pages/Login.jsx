@@ -11,7 +11,7 @@ return (
     <div>
         <h1 className='create-account-title'>Login</h1>
 
-        <form method="post" novalidate>
+        <form method="post" noValidate>
 
             <button type="submit" name="provider" value="Google" className="btn btn-external-login">
                 <img src="./icons/google-icon.svg" alt="Google-Icon" />

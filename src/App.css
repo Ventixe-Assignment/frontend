@@ -243,6 +243,20 @@ span {
     border-right: 1px solid var(--primary-100);
 
 }
+
+/* BADGES */
+.badge {
+   padding: .4rem;
+   border-radius: .5rem; 
+   
+   &.active {
+        background-color: var(--primary-50);    
+   }
+   &.ended {
+        background-color: var(--cool-gray-40);
+   }
+}
+
 /* STRUCTURE */
 .center-wrapper {
     background-color: var(--cool-gray-20);
@@ -397,7 +411,23 @@ footer {
         border: 1px solid var(--primary-50);
     }
 }
-/* BADGES */
+.btn-back {
+    padding: 1.2rem;
+    color: var(--cool-gray-10);
+    background-color: var(--primary-90);
+    border: 1px solid var(--transparent);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+
+    &:hover
+{
+    color: var(--primary-100);
+    font-weight: var(--font-bold);
+    background: var(--primary-40);
+    border: 1px solid var(--primary-50);
+}
+}
 
 /* SECTIONS - Login / Register */
 .create-account-title {
@@ -547,7 +577,6 @@ footer {
     }
     .logo-container h4 {
         display: flex;
-
     }
     .nav-link p {
         display: flex;
@@ -605,17 +634,16 @@ footer {
     overflow: hidden;
 
     display: grid;
-    grid-template-columns: auto 1fr 1fr auto;
+    grid-template-columns: auto 1fr auto auto auto;
     align-items: center;
     gap: 1rem;
-    
 }
 .event-1 {
     width: 200px;
     height: 120px;
     border-radius: .8rem;
     overflow: hidden;
-
+    
     img {
         object-fit: cover;
         height: 100%;
@@ -625,5 +653,124 @@ footer {
 .event-2 {
     display: flex;
     flex-direction: column;
+    gap: .5rem;
+
+    div{
+        display: none;
+    }
+}
+.event-3 {
+    display: none;
+}
+.event-4 {
+    display: none;
+}
+@media(width >= 768px) {
+    .event-card {
+        grid-template-columns: auto 1fr auto auto auto;
+        
+    }
+    .event-2 div {
+        display: flex;
+    }
+    .event-3 {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+    }
+    .event-4 {
+        display: block;
+    }
+}
+@media(width >= 1400px){
+    .event-card {
+        grid-template-columns: auto 1fr auto auto auto;
+        grid-template-rows: repeat(50, 1fr);
+    }
+}
+
+/* CARDS - Event Details */
+
+.event-details {
+    background-color: var(--cool-gray-20);
+    padding: 1rem;
+    border-radius: .8rem;
+}
+.details-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 2rem 0;
+
+}
+.details-body {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: 1fr;
+    grid-template-areas: "img img img"
+                         "desc desc desc" 
+                         "where when at";
     gap: 1rem;
+    
+    h5 {
+        color: var(--primary-100);
+        font-weight: var(--font-bold);
+    }
+}
+.detail-1 {
+    grid-area: desc;
+    line-height: 1.5rem;
+}
+.detail-2 {
+    grid-area: where;
+}
+.detail-3 {
+    grid-area: when;
+}
+.detail-4 {
+    grid-area: at;
+}
+.detail-5 {
+    grid-area: img;
+}
+.detail-5 {
+    height: 200px;
+    width: 100%;
+    margin-bottom: 2rem;
+    border-radius: .8rem;
+    overflow: hidden;
+
+    img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+@media(width >= 768px) {
+    .details-body {
+        grid-template-columns: 1fr auto;
+        grid-template-rows: 1fr auto auto auto;
+        grid-template-areas: "img img"
+                             "desc where"
+                             "desc when"
+                             "desc at";
+    }
+    .detail-5 {
+        height: 400px;
+    }
+}
+@media(width >= 1400px){
+        .details-body {
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto auto ;
+        grid-template-areas: "desc img"
+                             "where img"
+                             "when img"
+                             "at img"
+                            ;
+        gap: 2rem;
+    }
+        .detail-5 {
+        height: 600px;
+    }
 }
