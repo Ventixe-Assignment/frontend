@@ -18,8 +18,13 @@ const EventDetails = () => {
           <i class="bi bi-arrow-left"></i>
         </Link>
         <h1>{event.name}</h1>
-        <div className={`${event.status ? 'active' : 'ended'} event-4 title-medium-12 badge`}>
-            <div>{event.status ? 'Active' : 'Ended'}</div>
+        <div>
+          <div className={`${event.status ? 'active' : 'ended'} title-medium-12 badge`}>
+              <div>{event.status ? 'Active' : 'Ended'}</div>
+          </div>
+          <div className='title-medium-12 badge'>
+            {event.category}
+          </div>
         </div>
       </div>
 
@@ -37,7 +42,7 @@ const EventDetails = () => {
           <h5>When?</h5>
           <div className='title-semibold-16'>{new Date(event.startDate).toLocaleDateString()}</div>
         </div>
-        
+
         <div className='detail-4'>
           <h5>At?</h5>
           <div className='title-semibold-16'>{new Date(event.startDate).toLocaleTimeString()}</div>
@@ -46,6 +51,10 @@ const EventDetails = () => {
         <div className='detail-5'>
           <img src={event.imageUrl} alt="Event image" />
         </div>
+      </div>
+      <div className='details-footer'>
+        <p className='title-bold-16'>Do you find this interesing?</p>
+        <Link to={`/bookings/${id}`}><i class="bi bi-arrow-right-short"></i>Book your ticket now!</Link>
       </div>
 
     </div>

@@ -699,9 +699,8 @@ footer {
 .details-header {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     margin: 2rem 0;
-
 }
 .details-body {
     display: grid;
@@ -716,6 +715,12 @@ footer {
         color: var(--primary-100);
         font-weight: var(--font-bold);
     }
+}
+.details-footer {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
 }
 .detail-1 {
     grid-area: desc;
@@ -773,4 +778,18 @@ footer {
         .detail-5 {
         height: 600px;
     }
+}
+
+/* FORMS - Booking */
+.book-info {
+    
+    h4 {
+        color: var(--primary-100);
+    }
+    div {
+        margin-top: .5rem;
+        font-weight: var(--font-semibold);
+        color: var(--cool-gray-80)
+    }
+    
 }

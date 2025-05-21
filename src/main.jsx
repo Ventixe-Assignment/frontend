@@ -3,13 +3,16 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import EventProvider from './assets/contexts/EventContext.jsx'
+import BookingProvider from './assets/contexts/BookingContext.jsx'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <EventProvider>
-        <App />
+        <BookingProvider>
+          <App />
+        </BookingProvider>
       </EventProvider>
     </BrowserRouter>
   </StrictMode>,
