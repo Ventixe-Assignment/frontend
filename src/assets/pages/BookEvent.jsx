@@ -38,7 +38,7 @@ const BookEvent = () => {
     return (
         <div className='booking-event'>
             <div className='booking-header'>
-                <Link to='/events' className='btn btn-back'>
+                <Link to={`/events/${event.id}`} className='btn btn-back'>
                     <i class="bi bi-arrow-left"></i>
                 </Link>
                 <h1 className='booking-title'>Book Event</h1>
@@ -95,7 +95,7 @@ const BookEvent = () => {
                 
                 <button type="submit"  className='btn btn-register-login'>Book - {event.name}</button>
             </form>
-            
+
             {bookingStatus === 'success' && (
                 <div className='success'>
                     <p>Booking sent successfully!</p>
