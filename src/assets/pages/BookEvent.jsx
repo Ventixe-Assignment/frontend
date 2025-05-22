@@ -1,12 +1,15 @@
-import React, { useContext, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { EventContext } from '../contexts/EventContext'
 import { BookingContext } from '../contexts/BookingContext'
+import { validateBlankSpace } from '../Helpers/Validation'
 
 const BookEvent = () => {
     const {id} = useParams()
     const { event, getEvent } = useContext(EventContext)
     const {postBooking,formData,setFormData,resetFormData,bookingStatus,setBookingStatus} = useContext(BookingContext)
+    const [ errors, setErrors ] = useState({})
+    const navigate = useNavigate()
 
     useEffect(() => {
         getEvent(id)
@@ -15,21 +18,41 @@ const BookEvent = () => {
     }, [])
 
     useEffect(() => {
-        if(bookingStatus === 'success' || bookingStatus === 'error') {
+        if (bookingStatus === 'success') {
             resetFormData()
 
             const timeOut = setTimeout(() => {
                 setBookingStatus(null)
-            }, 4000);
-
+                navigate('/events')
+            }, 1500);
             return () => clearTimeout(timeOut)
-        } 
+        }
+
+        if (bookingStatus === 'error') {
+
+            const timeOut = setTimeout(() => {
+                setBookingStatus(null)
+            }, 1500);
+            return () => clearTimeout(timeOut)
+        }
     }, [bookingStatus])
     
     const handleSubmit = async (e) => {
         e.preventDefault()
+        const fieldErrors = {}
+
+        Object.entries(formData).forEach(([name,value]) => {
+            if (!validateBlankSpace.test(value) && name !== 'eventId' && name !== 'ticketQuantity') {
+                fieldErrors[name] = 'Cannot skip this field'
+            }
+        })
+        
+        setErrors(fieldErrors)
+        if (Object.keys(fieldErrors).length > 0) return
+
         await postBooking()
     }
+
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData(prev => ({...prev, [name]: value }))
@@ -57,26 +80,32 @@ const BookEvent = () => {
                     <div className='input-group'>
                         <label className='form-label'>First Name</label>
                         <input className='form-input' name='firstName' value={formData.firstName} onChange={handleChange} required/>
+                        <small className='validate'>{errors.firstName && errors.firstName}</small>
                     </div>
                     <div className='input-group'>
                         <label className='form-label'>Last Name</label>
                         <input className='form-input' name='lastName' value={formData.lastName} onChange={handleChange} required/>
+                        <small className='validate'>{errors.lastName && errors.lastName}</small>
                     </div>
                     <div className='input-group'>
                         <label className='form-label'>Email</label>
                         <input type='email' className='form-input' name='email' value={formData.email} onChange={handleChange} required/>
+                        <small className='validate'>{errors.email && errors.email}</small>
                     </div>
                     <div className='input-group'>
                         <label className='form-label'>City</label>
                         <input className='form-input' name='city' value={formData.city} onChange={handleChange} required/>
+                        <small className='validate'>{errors.city && errors.city}</small>
                     </div>
                     <div className='input-group'>
                         <label className='form-label'>Street</label>
                         <input className='form-input' name='street' value={formData.street} onChange={handleChange} required/>
+                        <small className='validate'>{errors.street && errors.street}</small>
                     </div>
                     <div className='input-group'>
                         <label className='form-label'>Postal Code</label>
                         <input className='form-input' name='postalCode' value={formData.postalCode} onChange={handleChange} required/>
+                        <small className='validate'>{errors.postalCode && errors.postalCode}</small>
                     </div>
                     <div className='input-group'>
                         <label className='form-label'>Tickets</label>
@@ -87,8 +116,7 @@ const BookEvent = () => {
                                 {i + 1}
                               </option>  
                             ))}
-
-                            
+  
                         </select>
                     </div>
                 </div>
