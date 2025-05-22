@@ -450,7 +450,7 @@ footer {
 .form-input {
     width: 100%;
     font-size: 1em;
-    border: 1px solid var(--cool-gray-40);
+    border: 1px solid var(--cool-gray-30);
     background-color: var(--transparent);
     border-radius: .8rem;
     color: var(--gray-100);
@@ -690,7 +690,6 @@ footer {
 }
 
 /* CARDS - Event Details */
-
 .event-details {
     background-color: var(--cool-gray-20);
     padding: 1rem;
@@ -781,7 +780,29 @@ footer {
 }
 
 /* FORMS - Booking */
-.book-info {
+.booking-event {
+    background-color: var(--cool-gray-10);
+    padding: 2rem 1rem;
+    border-radius: .8rem;
+    height: 55dvh;
+}
+.booking-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    width: 100%;
+    position: relative;
+
+    .btn-back {
+        position: absolute;
+        left: 0;
+    }
+}
+.booking-title {
+    color: var(--gray-80);
+}
+.booking-info {
     
     h4 {
         color: var(--primary-100);
@@ -795,4 +816,20 @@ footer {
 }
 .ticket {
     width: auto;
+}
+.success {
+    display: inline-block;
+    color: var(--cool-gray-10);
+    padding: .8rem;
+    background-color: var(--primary-90);
+    margin-top: 1rem;
+    border-radius: .8rem;
+}
+.error {
+    display: inline-block;
+    color: var(--cool-gray-10);
+    padding: .8rem;
+    background-color: firebrick;
+    margin-top: 1rem;
+    border-radius: .8rem;
 }

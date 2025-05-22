@@ -6,6 +6,7 @@ const BookingProvider = ({children}) => {
     const apiConnection = `https://localhost:7062/api/bookings`
     const [bookings, setBookings] = useState([])
     const [booking, setBooking] = useState({})
+    const [bookingStatus, setBookingStatus] = useState(null)
     const [formData,setFormData] = useState({ 
     eventId: '', 
     firstName: '',
@@ -16,6 +17,9 @@ const BookingProvider = ({children}) => {
     postalCode: '',
     ticketQuantity: 1
     })
+    const resetFormData = () => {
+        setFormData({...formData, eventId: formData.eventId})
+    }
 
     const getBooking = async (id) => {
         try {
@@ -40,12 +44,17 @@ const BookingProvider = ({children}) => {
 
             if(!res.ok) {
                 console.log('Booking Failed!')
+                setBookingStatus('error')
+   
             } else {
                 console.log('Booking Successful')
+                setBookingStatus('success')
+   
             }
         }
         catch(error) {
             console.error('Error posting the booking', error)
+            setBookingStatus('error')
         }
     }
 
@@ -65,7 +74,16 @@ const BookingProvider = ({children}) => {
     }, [])
 
     return (
-        <BookingContext.Provider value={{ bookings, booking, getBooking, postBooking, formData, setFormData }}>
+        <BookingContext.Provider value={{ 
+            bookings, 
+            booking, 
+            getBooking, 
+            postBooking, 
+            formData, 
+            setFormData,
+            resetFormData,
+            bookingStatus,
+            setBookingStatus }}>
             {children}
         </BookingContext.Provider>
     )

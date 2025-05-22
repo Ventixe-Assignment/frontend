@@ -1,21 +1,33 @@
 import React, { useContext, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { EventContext } from '../contexts/EventContext'
 import { BookingContext } from '../contexts/BookingContext'
 
 const BookEvent = () => {
     const {id} = useParams()
     const { event, getEvent } = useContext(EventContext)
-    const { postBooking, formData, setFormData } = useContext(BookingContext)
+    const {postBooking,formData,setFormData,resetFormData,bookingStatus,setBookingStatus} = useContext(BookingContext)
 
     useEffect(() => {
         getEvent(id)
         setFormData(prev => ({...prev, eventId: id}))
+        setBookingStatus(null)
     }, [])
+
+    useEffect(() => {
+        if(bookingStatus === 'success' || bookingStatus === 'error') {
+            resetFormData()
+
+            const timeOut = setTimeout(() => {
+                setBookingStatus(null)
+            }, 4000);
+
+            return () => clearTimeout(timeOut)
+        } 
+    }, [bookingStatus])
     
     const handleSubmit = async (e) => {
         e.preventDefault()
-
         await postBooking()
     }
     const handleChange = (e) => {
@@ -24,9 +36,14 @@ const BookEvent = () => {
     } 
 
     return (
-        <div>
-            <h1 className='create-account-title'>Book Event</h1>
-            <div className='book-info'>
+        <div className='booking-event'>
+            <div className='booking-header'>
+                <Link to='/events' className='btn btn-back'>
+                    <i class="bi bi-arrow-left"></i>
+                </Link>
+                <h1 className='booking-title'>Book Event</h1>
+            </div>
+            <div className='booking-info'>
                 <h4>Information</h4>
                 <div className='divider'></div>
                 <div>{event.name}</div>
@@ -35,7 +52,7 @@ const BookEvent = () => {
             </div>
 
             <form onSubmit={handleSubmit} noValidate>
-                <input name='eventId' value={formData.evenId} hidden readOnly />
+                <input name='eventId' value={formData.eventId} hidden readOnly />
                 <div className='shrink'>
                     <div className='input-group'>
                         <label className='form-label'>First Name</label>
@@ -75,10 +92,20 @@ const BookEvent = () => {
                         </select>
                     </div>
                 </div>
-
-
+                
                 <button type="submit"  className='btn btn-register-login'>Book - {event.name}</button>
             </form>
+            
+            {bookingStatus === 'success' && (
+                <div className='success'>
+                    <p>Booking sent successfully!</p>
+                </div>
+            )}
+            {bookingStatus === 'error' && (
+                <div className='error'>
+                    <p>Error posting the booking, try again...</p>
+                </div>
+            )}
         </div>
     
   )
