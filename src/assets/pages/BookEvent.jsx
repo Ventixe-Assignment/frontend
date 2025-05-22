@@ -135,7 +135,6 @@ const BookEvent = () => {
                 </div>
             )}
         </div>
-    
   )
 }
 
