@@ -31,7 +31,7 @@ return (
                 </div>
                 <div className='input-group'>
                     <label className='form-label'>Password</label>
-                    <input className='form-input'/>
+                    <input className='form-input' type='password'/>
                 </div>
             </div>
 

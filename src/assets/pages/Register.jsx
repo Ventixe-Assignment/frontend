@@ -25,11 +25,11 @@ const Register = () => {
           <div className="shrink">
               <div className="input-group">
                   <label className="form-label">Password</label>
-                  <input className="form-input" />
+                  <input className="form-input" type='password' />
               </div>
               <div className="input-group">
                   <label className="form-label">Confirm Password</label>
-                  <input className="form-input" />
+                  <input className="form-input" type='password' />
               </div>
           </div>
 

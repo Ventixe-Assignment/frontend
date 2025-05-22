@@ -61,6 +61,19 @@ const BookEvent = () => {
                         <label className='form-label'>Postal Code</label>
                         <input className='form-input' name='postalCode' value={formData.postalCode} onChange={handleChange} required/>
                     </div>
+                    <div className='input-group'>
+                        <label className='form-label'>Tickets</label>
+                        <select className='form-input ticket' name='ticketQuantity' value={formData.ticketQuantity} onChange={handleChange} required>
+       
+                            {[...Array(10)].map((_, i) => (
+                              <option key={i + 1} value={i + 1}>
+                                {i + 1}
+                              </option>  
+                            ))}
+
+                            
+                        </select>
+                    </div>
                 </div>
 
 

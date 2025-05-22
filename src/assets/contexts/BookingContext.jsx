@@ -13,7 +13,8 @@ const BookingProvider = ({children}) => {
     email: '',
     city: '',
     street: '',
-    postalCode: ''
+    postalCode: '',
+    ticketQuantity: 1
     })
 
     const getBooking = async (id) => {
