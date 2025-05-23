@@ -4,16 +4,19 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import EventProvider from './assets/contexts/EventContext.jsx'
 import BookingProvider from './assets/contexts/BookingContext.jsx'
+import AuthProvider from './assets/contexts/AuthContext.jsx'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <EventProvider>
-        <BookingProvider>
-          <App />
-        </BookingProvider>
-      </EventProvider>
+      <AuthProvider>
+        <EventProvider>
+          <BookingProvider>
+            <App />
+          </BookingProvider>
+        </EventProvider>
+      </AuthProvider>
     </BrowserRouter>
   </StrictMode>,
 )

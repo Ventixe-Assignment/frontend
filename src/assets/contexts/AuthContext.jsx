@@ -20,16 +20,18 @@ const AuthProvider = ({children}) => {
             if(!res.ok) {
                 console.log('Login Failed!')
                 setLoginStatus('error')
+                return false
    
             } else {
                 console.log('Login Successful')
                 setLoginStatus('success')
-   
+                return true
             }
         }
         catch(error) {
             console.error('Error during login attempt', error)
             setLoginStatus('error')
+            return false
         }
     }
 
@@ -76,7 +78,7 @@ const AuthProvider = ({children}) => {
     }
 
     return (
-        <AuthProvider value={{
+        <AuthContext.Provider value={{
             loginStatus, setLoginStatus,
             registerStatus, setRegisterStatus,
             loginFormData, setLoginFormData,
@@ -84,7 +86,7 @@ const AuthProvider = ({children}) => {
             postLogin, postRegister, postLogout
          }}>
             {children}
-        </AuthProvider>
+        </AuthContext.Provider>
     )
 }
 

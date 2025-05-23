@@ -16,6 +16,7 @@ const BookingProvider = ({children}) => {
     postalCode: '',
     ticketQuantity: 1
     })
+    
     const resetFormData = () => {
         setFormData({...formData, eventId: formData.eventId})
     }
@@ -76,13 +77,10 @@ const BookingProvider = ({children}) => {
         <BookingContext.Provider value={{ 
             bookings, 
             booking, 
-            getBooking, 
-            postBooking, 
-            formData, 
-            setFormData,
+            getBooking, postBooking, 
+            formData, setFormData,
             resetFormData,
-            bookingStatus,
-            setBookingStatus }}>
+            bookingStatus, setBookingStatus }}>
             {children}
         </BookingContext.Provider>
     )
