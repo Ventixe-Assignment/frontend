@@ -11,7 +11,7 @@ const EventDetails = () => {
   }, [])
 
   return (
-    <div className='event-details'>
+    <div>
 
       <div className='details-header'>
         <Link to='/events' className='btn btn-back'>

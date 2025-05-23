@@ -56,13 +56,14 @@ const BookEvent = () => {
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData(prev => ({...prev, [name]: value }))
+        setErrors({})
     } 
 
     return (
-        <div className='booking-event'>
+        <div>
             <div className='booking-header'>
                 <Link to={`/events/${event.id}`} className='btn btn-back'>
-                    <i class="bi bi-arrow-left"></i>
+                    <i className="bi bi-arrow-left"></i>
                 </Link>
                 <h1 className='booking-title'>Book Event</h1>
             </div>
@@ -80,32 +81,32 @@ const BookEvent = () => {
                     <div className='input-group'>
                         <label className='form-label'>First Name</label>
                         <input className='form-input' name='firstName' value={formData.firstName} onChange={handleChange} required/>
-                        <small className='validate'>{errors.firstName && errors.firstName}</small>
+                        <small className='validatefield'>{errors.firstName && errors.firstName}</small>
                     </div>
                     <div className='input-group'>
                         <label className='form-label'>Last Name</label>
                         <input className='form-input' name='lastName' value={formData.lastName} onChange={handleChange} required/>
-                        <small className='validate'>{errors.lastName && errors.lastName}</small>
+                        <small className='validatefield'>{errors.lastName && errors.lastName}</small>
                     </div>
                     <div className='input-group'>
                         <label className='form-label'>Email</label>
                         <input type='email' className='form-input' name='email' value={formData.email} onChange={handleChange} required/>
-                        <small className='validate'>{errors.email && errors.email}</small>
+                        <small className='validatefield'>{errors.email && errors.email}</small>
                     </div>
                     <div className='input-group'>
                         <label className='form-label'>City</label>
                         <input className='form-input' name='city' value={formData.city} onChange={handleChange} required/>
-                        <small className='validate'>{errors.city && errors.city}</small>
+                        <small className='validatefield'>{errors.city && errors.city}</small>
                     </div>
                     <div className='input-group'>
                         <label className='form-label'>Street</label>
                         <input className='form-input' name='street' value={formData.street} onChange={handleChange} required/>
-                        <small className='validate'>{errors.street && errors.street}</small>
+                        <small className='validatefield'>{errors.street && errors.street}</small>
                     </div>
                     <div className='input-group'>
                         <label className='form-label'>Postal Code</label>
                         <input className='form-input' name='postalCode' value={formData.postalCode} onChange={handleChange} required/>
-                        <small className='validate'>{errors.postalCode && errors.postalCode}</small>
+                        <small className='validatefield'>{errors.postalCode && errors.postalCode}</small>
                     </div>
                     <div className='input-group'>
                         <label className='form-label'>Tickets</label>

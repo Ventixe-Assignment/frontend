@@ -24,7 +24,6 @@ return (
         <h1 className='create-account-title'>Login</h1>
 
         <form method="post" noValidate>
-
             <button type="submit" name="provider" value="Google" className="btn btn-external-login">
                 <img src="./icons/google-icon.svg" alt="Google-Icon" />
                 Login with Google
@@ -56,7 +55,7 @@ return (
         </form>
 
         {loginStatus === 'error' && (
-            <div className='validate'>
+            <div className='validatelogin'>
                 <p>The email or password you entered are incorrect</p>
             </div>
         )}
