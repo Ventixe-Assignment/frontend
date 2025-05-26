@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { EventContext } from '../contexts/EventContext'
 import { BookingContext } from '../contexts/BookingContext'
-import { validateBlankSpace } from '../Helpers/Validation'
+import { validateBlankSpace } from '../helpers/Validation.js'
 
 const BookEvent = () => {
     const {id} = useParams()

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import titles from '../helpers/PageTitles'
+import  titles  from '../helpers/PageTitles'
 import { AuthContext } from '../contexts/AuthContext'
 
 const Header = () => {
