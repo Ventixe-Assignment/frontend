@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 export const AuthContext = createContext()
 
 const AuthProvider = ({children}) => {
-    const apiConnection = `https://localhost:7269/api/authentications`
+    const apiConnection = `jannes-ventixe-sqlserver.database.windows.net/api/authentications`
     const [token, setToken] = useState(localStorage.getItem('token') || null)
     const [loginStatus, setLoginStatus] = useState(null)
     const [registerStatus, setRegisterStatus] = useState(null)

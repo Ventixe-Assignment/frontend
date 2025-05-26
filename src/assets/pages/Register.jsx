@@ -1,35 +1,45 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../contexts/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
+    const { postRegister, registerFormData, setRegisterFormData } = useContext(AuthContext)
+    const navigate = useNavigate()
+
+    const handleRegister = async (e) => {
+        e.preventDefault()
+        var ok = await postRegister()
+
+        if (ok) {
+            navigate('/')
+        }
+    }
+
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setRegisterFormData(prev => ({...prev, [name]: value }))
+    }
+
+
   return (
     <div>
       <h1 className="create-account-title">Create Account</h1>
 
-      <form method="post" noValidate enctype="multipart/form-data">
-          <div className="shrink">
-              <div className="input-group">
-                  <label className="form-label">First Name</label>
-                  <input className="form-input" />
-              </div>
-              <div className="input-group">
-                  <label className="form-label">Last Name</label>
-                  <input className="form-input" />
-              </div>
-          </div>
+      <form method="post" onSubmit={handleRegister} noValidate enctype="multipart/form-data">
 
           <div className="input-group">
               <label className="form-label">Email</label>
-              <input className="form-input" />
+              <input className="form-input" type='email' name='email' value={registerFormData.email} onChange={handleChange} required />
           </div>
 
           <div className="shrink">
               <div className="input-group">
                   <label className="form-label">Password</label>
-                  <input className="form-input" type='password' />
+                  <input className="form-input" type='password' name='password' value={registerFormData.password} onChange={handleChange} required />
               </div>
               <div className="input-group">
                   <label className="form-label">Confirm Password</label>
-                  <input className="form-input" type='password' />
+                  <input className="form-input" type='password' name='confirmPassword' value={registerFormData.confirmPassword} onChange={handleChange} required />
               </div>
           </div>
 
