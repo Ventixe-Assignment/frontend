@@ -3,14 +3,22 @@ import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../contexts/AuthContext'
 
 const Login = () => {
-    const { postLogin, loginStatus, setLoginStatus, loginFormData, setLoginFormData } = useContext(AuthContext)
+    const { postLogin, loginStatus, setLoginStatus, loginFormData, setLoginFormData, resetFormData } = useContext(AuthContext)
     const navigate = useNavigate()
+    
+    const resetForm = () => {
+        resetFormData()
+    }
 
     const handleLogin = async (e) => {
         e.preventDefault()
         var ok = await postLogin()
-        if (ok)
+        
+        if (ok) {
+            resetForm()
             navigate('/home')
+        }
+
     }
 
     const handleChange = (e) => {

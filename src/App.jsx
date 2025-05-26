@@ -10,6 +10,7 @@ import BookEvent from './assets/pages/BookEvent'
 import Invoice from './assets/pages/Invoice'
 import Login from './assets/pages/Login'
 import Register from './assets/pages/Register'
+import Logout from './assets/pages/Logout'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path='/bookings' element={<Bookings />}/>
         <Route path='/bookings/:id' element={<BookEvent />}/>
         <Route path='/invoice' element={<Invoice />}/>
+        <Route path='/logout' element={<Logout />}/>
       </Route>
     </Routes>
   )

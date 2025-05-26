@@ -58,21 +58,6 @@ const BookingProvider = ({children}) => {
         }
     }
 
-    useEffect(() => {
-
-        const fetchData = async () => {
-        try {
-            const res = await fetch(apiConnection)
-            const result = await res.json()
-            setBookings(result.data)
-        } 
-        catch(error) {
-            console.error('Error fetching bookings', error)
-        }    
-    }
-        fetchData()
-    }, [])
-
     return (
         <BookingContext.Provider value={{ 
             bookings, 

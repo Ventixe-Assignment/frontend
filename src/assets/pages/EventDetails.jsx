@@ -15,7 +15,7 @@ const EventDetails = () => {
 
       <div className='details-header'>
         <Link to='/events' className='btn btn-back'>
-          <i class="bi bi-arrow-left"></i>
+          <i className="bi bi-arrow-left"></i>
         </Link>
         <h1>{event.name}</h1>
         <div>
@@ -54,7 +54,7 @@ const EventDetails = () => {
       </div>
       <div className='details-footer'>
         <p className='title-bold-16'>Do you find this interesing?</p>
-        <Link to={`/bookings/${id}`}><i class="bi bi-arrow-right-short"></i>Book your ticket now!</Link>
+        <Link to={`/bookings/${id}`}><i className="bi bi-arrow-right-short"></i>Book your ticket now!</Link>
       </div>
 
     </div>
