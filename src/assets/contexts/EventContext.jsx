@@ -3,7 +3,7 @@ import React, { createContext, useState, useEffect } from "react";
 export const EventContext = createContext()
 
 const EventProvider = ({children}) => {
-    const apiConnection = `https://localhost:7280/api/events`
+    const apiConnection = `https://eventservice1-cnczckdzfnaybvg3.swedencentral-01.azurewebsites.net/api/events`
     const [events, setEvents] = useState([])
     const [event, setEvent] = useState({})
 

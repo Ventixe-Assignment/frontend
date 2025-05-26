@@ -1,8 +1,8 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
 export const BookingContext = createContext()
 
 const BookingProvider = ({children}) => {
-    const apiConnection = `https://localhost:7062/api/bookings`
+    const apiConnection = `https://bookingservice1-guarh9bkaeg5apb2.swedencentral-01.azurewebsites.net/api/bookings`
     const [bookings, setBookings] = useState([])
     const [booking, setBooking] = useState({})
     const [bookingStatus, setBookingStatus] = useState(null)

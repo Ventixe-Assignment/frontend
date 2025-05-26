@@ -25,7 +25,7 @@ const Register = () => {
     <div>
       <h1 className="create-account-title">Create Account</h1>
 
-      <form method="post" onSubmit={handleRegister} noValidate enctype="multipart/form-data">
+      <form method="post" onSubmit={handleRegister} noValidate>
 
           <div className="input-group">
               <label className="form-label">Email</label>
