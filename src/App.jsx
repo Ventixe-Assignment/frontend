@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import PortalLayout from './assets/layouts/PortalLayout'
 import CenterLayout from './assets/layouts/CenterLayout'
+import ProtectedRoute from './assets/routing/ProtectedRoute'
 import Home from './assets/pages/Home'
 import Events from './assets/pages/Events'
 import EventDetails from './assets/pages/EventDetails'
@@ -20,7 +21,9 @@ function App() {
         <Route path='/register' element={<Register />} />
       </Route>
 
-      <Route element={<PortalLayout />}>
+
+      <Route element={<ProtectedRoute><PortalLayout /></ProtectedRoute>}>
+
         <Route path='/home' element={<Home />} />
         <Route path='/events' element={<Events />} />
         <Route path='/events/:id' element={<EventDetails />} />
