@@ -43,7 +43,6 @@ const AuthProvider = ({children}) => {
     
 
     const postLogin = async () => {
-        setLoginStatus('loading')
 
         try {
             const res = await fetch(`${apiConnection}/login`, {
@@ -51,8 +50,6 @@ const AuthProvider = ({children}) => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(loginFormData)
             })
-
-            await new Promise(resolve => setTimeout(resolve, 5000))
 
             if(!res.ok) {
                 console.log('Login Failed!')
@@ -83,7 +80,6 @@ const AuthProvider = ({children}) => {
     }
 
     const postRegister = async () => {
-        setRegisterStatus('loading')
 
         try {
             const res = await fetch(`${apiConnection}/register`, {

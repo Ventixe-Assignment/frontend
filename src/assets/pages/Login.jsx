@@ -5,7 +5,6 @@ import { AuthContext } from '../contexts/AuthContext'
 const Login = () => {
     const { postLogin, loginStatus, setLoginStatus, loginFormData, setLoginFormData, resetFormData } = useContext(AuthContext)
     const navigate = useNavigate()
-    
     const resetForm = () => {
         resetFormData()
     }
@@ -59,14 +58,8 @@ return (
                  <span>Remember me</span>
             </div>
 
-            <button type="submit" disabled={loginStatus === 'loading'} className='btn btn-register-login'>Log in</button>
+            <button type="submit" className='btn btn-register-login'>Log in</button>
         </form>
-
-        {loginStatus === 'loading' && (
-            <div>
-                <ClipLoader color="#333" size={20} />
-            </div>
-        )}
 
         {loginStatus === 'error' && (
             <div className='validatelogin'>
@@ -78,8 +71,6 @@ return (
             <p>Don't have an account?</p> <a href='/register' >Go to Register</a>
         </div>
 
-
-    
     </div>
     )
 }
