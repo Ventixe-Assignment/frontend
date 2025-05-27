@@ -52,6 +52,8 @@ const AuthProvider = ({children}) => {
                 body: JSON.stringify(loginFormData)
             })
 
+            await new Promise(resolve => setTimeout(resolve, 5000))
+
             if(!res.ok) {
                 console.log('Login Failed!')
                 setLoginStatus('error')
