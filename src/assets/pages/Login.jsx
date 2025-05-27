@@ -62,7 +62,7 @@ return (
             <button type="submit" disabled={loginStatus === 'loading'} className='btn btn-register-login'>Log in</button>
         </form>
 
-        {loginStatus === 'error' && (
+        {loginStatus === 'loading' && (
             <div>
                 <ClipLoader color="#333" size={20} />
             </div>
