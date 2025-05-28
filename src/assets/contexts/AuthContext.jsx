@@ -3,12 +3,12 @@ export const AuthContext = createContext()
 
 const AuthProvider = ({children}) => {
     const apiConnection = `https://authservice-dmefe0b8adg2hvek.swedencentral-01.azurewebsites.net/api/authentications`
-    const [token, setToken] = useState(localStorage.getItem('token') || null)
+    const [user, setUser] = useState()
     const [loginStatus, setLoginStatus] = useState(null)
     const [registerStatus, setRegisterStatus] = useState(null)
-    const [user, setUser] = useState()
     const [loginFormData,setLoginFormData] = useState({ email: '', password: '', rememberMe: false })
     const [registerFormData, setRegisterFormData] = useState({ email: '', password: '', confirmPassword: '' })
+    const [token, setToken] = useState(localStorage.getItem('token') || null)
 
     const resetFormData = () => {
         setLoginFormData({ email: "", password: "", rememberMe: false })
@@ -68,7 +68,7 @@ const AuthProvider = ({children}) => {
                 return true
 
             } else {
-                console.log('Login successfull, but token not saved!');
+                console.log('Login successful, but token not saved!');
                 setLoginStatus('error')
                 return false
             }
