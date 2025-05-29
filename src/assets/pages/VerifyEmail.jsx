@@ -27,7 +27,7 @@ const VerifyEmail = () => {
 
             const registered = await postRegister(formData)
             
-            if (registered === 'true') {
+            if (registered) {
                 console.log('Registration of verified user successful!');
                 navigate('/')
             }
