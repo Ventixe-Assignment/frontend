@@ -32,7 +32,7 @@ const VerifyEmail = () => {
                 navigate('/')
             }
             else {
-                console.error('Registration failed after verification success.')
+                console.error('Registration failed after verification success! Check password requirements.')
                 navigate('/register')
             }
         }
