@@ -81,6 +81,7 @@ const AuthProvider = ({children}) => {
     }
 
     const postRegister = async (formData) => {
+         console.log('Sending payload to /register:', formData);
 
         try {
             const res = await fetch(`${apiConnection}/register`, {
