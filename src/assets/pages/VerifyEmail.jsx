@@ -7,7 +7,7 @@ const VerifyEmail = () => {
     const { state } = useLocation()
     const navigate = useNavigate()
     const {formEmail, formData} = state || {}
-    const { postVerify } = useContext(EmailContext)
+    const { postVerification } = useContext(EmailContext)
     const { postRegister, setRegisterFormData } = useContext(AuthContext)
 
     const [ searchUrlParams ] = useSearchParams()
@@ -21,7 +21,7 @@ const VerifyEmail = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const verified = await postVerify({ email, code })
+        const verified = await postVerification({ email, code })
 
         if (verified) {
             setRegisterFormData(formData)
