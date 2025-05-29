@@ -8,7 +8,7 @@ const VerifyEmail = () => {
     const { state } = useLocation()
     const { formEmail, formData } = state || {}
     const { postVerification } = useContext(EmailContext)
-    const { postRegister, setRegisterFormData } = useContext(AuthContext)
+    const { postRegister } = useContext(AuthContext)
 
     const [ searchUrlParams ] = useSearchParams()
     const urlEmail = searchUrlParams.get('email') || ''
@@ -25,7 +25,6 @@ const VerifyEmail = () => {
 
         if (verified) {
 
-
             const registered = await postRegister(formData)
             
             if (registered) {
@@ -33,6 +32,7 @@ const VerifyEmail = () => {
                 navigate('/')
             }
             else {
+                console.log("Registering with formData:", registerFormData);
                 console.error('Registration failed after verification success.')
                 navigate('/register')
             }
