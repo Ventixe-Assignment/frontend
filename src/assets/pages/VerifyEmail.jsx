@@ -24,7 +24,7 @@ const VerifyEmail = () => {
         const verified = await postVerification({ email, code })
 
         if (verified) {
-            setRegisterFormData({ formData })
+            setRegisterFormData({ registerFormData: formData })
 
             const registered = await postRegister()
             
