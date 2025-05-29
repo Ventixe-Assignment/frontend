@@ -1,17 +1,24 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
+import { EmailContext } from '../contexts/EmailContext'
 
 const Register = () => {
-    const { postRegister, registerFormData, setRegisterFormData } = useContext(AuthContext)
+    const { registerFormData, setRegisterFormData } = useContext(AuthContext)
+    const { postEmail } = useContext(EmailContext)
     const navigate = useNavigate()
 
     const handleRegister = async (e) => {
         e.preventDefault()
-        var ok = await postRegister()
+        const email = registerFormData.email
+        const emailSent = await postEmail(email)
 
-        if (ok) {
-            navigate('/')
+        if (emailSent) {
+            navigate('/verify-email', { state: {email, formData: registerFormData} })
+        }
+  
+        else {
+            console.error('Could not send verification email')    
         }
     }
 
@@ -19,7 +26,6 @@ const Register = () => {
         const { name, value } = e.target
         setRegisterFormData(prev => ({...prev, [name]: value }))
     }
-
 
   return (
     <div>
@@ -47,7 +53,7 @@ const Register = () => {
               <input type="checkbox"/> <span>I accept</span> <a asp-action="#">Terms and Conditions</a>
           </div>
 
-          <button type="submit" className="btn btn-register-login">Create Account</button>
+          <button type="submit" className="btn btn-register-login">Verify Me</button>
       </form>
 
       <div className="account-already">

@@ -12,6 +12,7 @@ import Invoice from './assets/pages/Invoice'
 import Login from './assets/pages/Login'
 import Register from './assets/pages/Register'
 import Logout from './assets/pages/Logout'
+import VerifyEmail from './assets/pages/VerifyEmail'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route element={<CenterLayout />}>
         <Route index element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/register/verify-email' element={<VerifyEmail />} />
       </Route>
 
 

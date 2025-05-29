@@ -5,17 +5,20 @@ import App from './App.jsx'
 import EventProvider from './assets/contexts/EventContext.jsx'
 import BookingProvider from './assets/contexts/BookingContext.jsx'
 import AuthProvider from './assets/contexts/AuthContext.jsx'
+import EmailProvider from './assets/contexts/EmailContext.jsx'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <EventProvider>
-          <BookingProvider>
-            <App />
-          </BookingProvider>
-        </EventProvider>
+        <EmailProvider>
+          <EventProvider>
+            <BookingProvider>
+              <App />
+            </BookingProvider>
+          </EventProvider>
+        </EmailProvider>
       </AuthProvider>
     </BrowserRouter>
   </StrictMode>,
