@@ -47,11 +47,14 @@ const VerifyEmail = () => {
         <h1>Go ahead and verify</h1>
         <p>We sent a code to this email {email}</p>
 
-        <form onSubmit={handleSubmit} noValidate>
+        <form method='post' onSubmit={handleSubmit} noValidate>
 
-            <input type='text' placeholder='Enter the code from email' value={code} onChange={(e) => setCode(e.target.value)} required/>
+            <div className='input-group'>
+                
+                <input className='form-input' type='text' placeholder='Enter the code from email' value={code} onChange={(e) => setCode(e.target.value)} required/>
+            </div>
 
-            <button type='submit'>Register Account</button>
+            <button className='btn btn-register-login' type='submit'>Register Account</button>
         </form>
     </div>
   )
