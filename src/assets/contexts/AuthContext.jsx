@@ -96,6 +96,7 @@ const AuthProvider = ({children}) => {
             } else {
                 console.log('Account created successfully')
                 setRegisterStatus('success')
+                return true
    
             }
         }
