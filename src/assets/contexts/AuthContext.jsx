@@ -81,7 +81,6 @@ const AuthProvider = ({children}) => {
     }
 
     const postRegister = async (formData) => {
-         console.log('Sending payload to /register:', formData);
 
         try {
             const res = await fetch(`${apiConnection}/register`, {
@@ -103,7 +102,7 @@ const AuthProvider = ({children}) => {
             }
         }
         catch(error) {
-            console.error('Error during registration attempt', error.message)
+            console.error('Error during registration attempt', error)
             setRegisterStatus('error')
             return false
         }
