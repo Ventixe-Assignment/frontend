@@ -10,11 +10,12 @@ const Register = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault()
-        const email = registerFormData.email
-        const emailSent = await postEmail(email)
+        
+        const formEmail = registerFormData.email
+        const emailSent = await postEmail(formEmail)
 
         if (emailSent) {
-            navigate('/register/verify-email', { state: {email, formData: registerFormData} })
+            navigate('/register/verify-email', { state: {formEmail, formData: registerFormData} })
         }
   
         else {

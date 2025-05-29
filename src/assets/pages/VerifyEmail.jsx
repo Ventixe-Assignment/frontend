@@ -1,17 +1,23 @@
 import React, { useContext, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import { EmailContext } from '../contexts/EmailContext'
 import { AuthContext } from '../contexts/AuthContext'
 
 const VerifyEmail = () => {
     const { state } = useLocation()
-    const {email, formData} = state || {}
-    const [ code, setCode ] = useState('')
+    const navigate = useNavigate()
+    const {formEmail, formData} = state || {}
     const { postVerify } = useContext(EmailContext)
     const { postRegister, setRegisterFormData } = useContext(AuthContext)
-    const navigate = useNavigate()
 
+    const [ searchUrlParams ] = useSearchParams()
+    const urlEmail = searchUrlParams.get('email') || ''
+    const urlCode = searchUrlParams.get('code') || ''
+
+    const email = formEmail || urlEmail
+    const [ code, setCode ] = useState(urlCode || '')
     
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
