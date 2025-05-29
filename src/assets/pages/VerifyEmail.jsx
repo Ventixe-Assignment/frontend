@@ -18,7 +18,7 @@ const VerifyEmail = () => {
     const [ code, setCode ] = useState(urlCode || '')
     
 
-    const handleVerifiedRegistration = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         const verified = await postVerification({ email, code })
@@ -58,7 +58,7 @@ const VerifyEmail = () => {
             <p className='verify-info'>Email not provided, Please go back and enter your email.</p>            
         )}
 
-        <form className='form-verify' method='post' onSubmit={handleVerifiedRegistration} noValidate>
+        <form className='form-verify' method='post' onSubmit={handleSubmit} noValidate>
             <input className='form-input-verify' maxLength={6} type='text' placeholder='Code' value={code} onChange={(e) => setCode(e.target.value)} required/>
        
             <button className='btn btn-register-login' type='submit'>Register Account</button>
