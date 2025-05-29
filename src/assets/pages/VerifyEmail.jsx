@@ -44,7 +44,7 @@ const VerifyEmail = () => {
     }
   return (
     <div>
-        <h1>Go ahead and verify</h1>
+        <h1 className="create-account-title">Go ahead and verify</h1>
         <p>We sent a code to this email {email}</p>
 
         <form method='post' onSubmit={handleSubmit} noValidate>
