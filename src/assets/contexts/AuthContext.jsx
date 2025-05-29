@@ -92,6 +92,7 @@ const AuthProvider = ({children}) => {
             if(!res.ok) {
                 console.log('Registration Failed!')
                 setRegisterStatus('error')
+                return false
    
             } else {
                 console.log('Account created successfully')
@@ -103,6 +104,7 @@ const AuthProvider = ({children}) => {
         catch(error) {
             console.error('Error during registration attempt', error)
             setRegisterStatus('error')
+            return false
         }
     }
 

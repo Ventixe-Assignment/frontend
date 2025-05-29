@@ -8,7 +8,7 @@ const VerifyEmail = () => {
     const navigate = useNavigate()
     const {formEmail, formData} = state || {}
     const { postVerification } = useContext(EmailContext)
-    const { postRegister, setRegisterFormData } = useContext(AuthContext)
+    const { postRegister } = useContext(AuthContext)
 
     const [ searchUrlParams ] = useSearchParams()
     const urlEmail = searchUrlParams.get('email') || ''
@@ -24,9 +24,8 @@ const VerifyEmail = () => {
         const verified = await postVerification({ email, code })
 
         if (verified) {
-            setRegisterFormData({ registerFormData: formData })
 
-            const registered = await postRegister()
+            const registered = await postRegister({formData})
             
             if (registered) {
                 console.log('Registration of verified user successful!');
