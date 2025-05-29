@@ -8,7 +8,7 @@ const Register = () => {
     const { postEmail } = useContext(EmailContext)
     const navigate = useNavigate()
 
-    const handleRegister = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         const formEmail = registerFormData.email
@@ -32,7 +32,7 @@ const Register = () => {
     <div>
       <h1 className="create-account-title">Create Account</h1>
 
-      <form method="post" onSubmit={handleRegister} noValidate>
+      <form method="post" onSubmit={handleSubmit} noValidate>
 
           <div className="input-group">
               <label className="form-label">Email</label>

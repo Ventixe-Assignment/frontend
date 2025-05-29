@@ -9,7 +9,7 @@ const Login = () => {
         resetFormData()
     }
 
-    const handleLogin = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         var ok = await postLogin()
         
@@ -41,7 +41,7 @@ return (
             </div>
         </form>
 
-        <form method="post" onSubmit={handleLogin} noValidate >
+        <form method="post" onSubmit={handleSubmit} noValidate >
             <div className='shrink'>
                 <div className='input-group'>
                     <label className='form-label' >Email</label>
