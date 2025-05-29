@@ -4,11 +4,11 @@ import { EmailContext } from '../contexts/EmailContext'
 import { AuthContext } from '../contexts/AuthContext'
 
 const VerifyEmail = () => {
-    const { state } = useLocation()
     const navigate = useNavigate()
-    const {formEmail, formData} = state || {}
+    const { state } = useLocation()
+    const { formEmail, formData } = state || {}
     const { postVerification } = useContext(EmailContext)
-    const { postRegister } = useContext(AuthContext)
+    const { postRegister, setRegisterFormData } = useContext(AuthContext)
 
     const [ searchUrlParams ] = useSearchParams()
     const urlEmail = searchUrlParams.get('email') || ''
@@ -24,8 +24,9 @@ const VerifyEmail = () => {
         const verified = await postVerification({ email, code })
 
         if (verified) {
+            setRegisterFormData(formData)
 
-            const registered = await postRegister(formData)
+            const registered = await postRegister()
             
             if (registered) {
                 console.log('Registration of verified user successful!');

@@ -80,13 +80,13 @@ const AuthProvider = ({children}) => {
         }
     }
 
-    const postRegister = async (formData) => {
+    const postRegister = async () => {
 
         try {
             const res = await fetch(`${apiConnection}/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(registerFormData)
             })
 
             if(!res.ok) {
@@ -102,7 +102,7 @@ const AuthProvider = ({children}) => {
             }
         }
         catch(error) {
-            console.error('Error during registration attempt', error)
+            console.error('Error during registration attempt', error.message)
             setRegisterStatus('error')
             return false
         }
