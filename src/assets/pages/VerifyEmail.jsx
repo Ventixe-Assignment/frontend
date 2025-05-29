@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import { EmailContext } from '../contexts/EmailContext'
 import { AuthContext } from '../contexts/AuthContext'
 
@@ -44,16 +44,23 @@ const VerifyEmail = () => {
     }
   return (
     <div>
-        <h1 className="create-account-title">Go ahead and verify</h1>
-        <p>We sent a code to this email {email}</p>
+        <div className='verify-header'>
+            <Link to='/register' className='btn btn-back'>
+                <i className="bi bi-arrow-left"></i>
+            </Link>
+            <h1 className="create-account-title">Go ahead and verify</h1>
+        </div>
+        <div className='divider'></div>
 
-        <form method='post' onSubmit={handleSubmit} noValidate>
+        {email ? (
+            <p className='verify-info'>We sent a code to this email: {email}</p>
+        ) : (
+            <p className='verify-info'>Email not provided, Please go back and enter your email.</p>            
+        )}
 
-            <div className='input-group'>
-                
-                <input className='form-input' type='text' placeholder='Enter the code from email' value={code} onChange={(e) => setCode(e.target.value)} required/>
-            </div>
-
+        <form className='form-verify' method='post' onSubmit={handleSubmit} noValidate>
+            <input className='form-input-verify' type='text' placeholder='Code' value={code} onChange={(e) => setCode(e.target.value)} required/>
+       
             <button className='btn btn-register-login' type='submit'>Register Account</button>
         </form>
     </div>
