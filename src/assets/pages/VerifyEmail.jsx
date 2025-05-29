@@ -32,7 +32,6 @@ const VerifyEmail = () => {
                 navigate('/')
             }
             else {
-                console.log("Registering with formData:", registerFormData);
                 console.error('Registration failed after verification success.')
                 navigate('/register')
             }

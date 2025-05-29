@@ -80,13 +80,13 @@ const AuthProvider = ({children}) => {
         }
     }
 
-    const postRegister = async (data) => {
+    const postRegister = async (formData) => {
 
         try {
             const res = await fetch(`${apiConnection}/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
+                body: JSON.stringify(formData)
             })
 
             if(!res.ok) {
