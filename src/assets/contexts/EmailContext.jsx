@@ -46,6 +46,7 @@ const EmailProvider = ({children}) => {
             } 
             else {
                 console.log('Confirmation successful!');
+                return true
             }
         }
         catch (ex) {
