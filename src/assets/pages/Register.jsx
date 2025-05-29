@@ -10,9 +10,9 @@ const Register = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault()
-        
+
         const formEmail = registerFormData.email
-        const emailSent = await postEmail(formEmail)
+        const emailSent = await postEmail({ email: formEmail })
 
         if (emailSent) {
             navigate('/register/verify-email', { state: {formEmail, formData: registerFormData} })
@@ -51,7 +51,7 @@ const Register = () => {
           </div>
 
           <div className="terms">
-              <input type="checkbox"/> <span>I accept</span> <a asp-action="#">Terms and Conditions</a>
+              <input type="checkbox"/> <span>I accept</span> <a href='#'>Terms and Conditions</a>
           </div>
 
           <button type="submit" className="btn btn-register-login">Verify Me</button>

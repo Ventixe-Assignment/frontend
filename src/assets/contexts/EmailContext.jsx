@@ -5,7 +5,7 @@ export const EmailContext = createContext()
 const EmailProvider = ({children}) => {
     const apiConnection = `https://emailservice-h6aeb7argpaxgtgs.swedencentral-01.azurewebsites.net/api/emails`
 
-    const postEmail = async (email) => {
+    const postEmail = async ({ email }) => {
         try {
             const res = await fetch(`${apiConnection}/send`, {
                 method: 'POST',
@@ -16,7 +16,7 @@ const EmailProvider = ({children}) => {
             })
 
             if (!res.ok) {
-                console.log('Network error, try again later!');
+                console.error(`Network error, try again later!: ${res.error}`);
                 return false
             } 
             else {
@@ -30,7 +30,7 @@ const EmailProvider = ({children}) => {
         }
     }
 
-    const postVerification = async (email, code) => {
+    const postVerification = async ({ email, code }) => {
         try {
             const res = await fetch(`${apiConnection}/verify`, {
                 method: 'POST',
@@ -41,7 +41,7 @@ const EmailProvider = ({children}) => {
             })
 
             if (!res.ok) {
-                console.log('Network error, try again later!');
+                console.error('Network error, try again later!');
                 return false
             } 
             else {

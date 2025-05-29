@@ -59,7 +59,7 @@ const VerifyEmail = () => {
         )}
 
         <form className='form-verify' method='post' onSubmit={handleSubmit} noValidate>
-            <input className='form-input-verify' type='text' placeholder='Code' value={code} onChange={(e) => setCode(e.target.value)} required/>
+            <input className='form-input-verify' maxLength={6} type='text' placeholder='Code' value={code} onChange={(e) => setCode(e.target.value)} required/>
        
             <button className='btn btn-register-login' type='submit'>Register Account</button>
         </form>
