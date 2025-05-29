@@ -527,12 +527,15 @@ footer {
     height: 50px;
     outline: none;
     border: none;
-    box-shadow: 0 0 10px var(--cool-gray-50);
+    box-shadow: 0 -2px 5px var(--cool-gray-50);
 }
 .form-input-verify::placeholder {
     font-size: 2rem;
     color: var(--cool-gray-60);
     text-align: center;
+}
+.form-input-verify:focus {
+    box-shadow: 0 2px 6px var(--cool-gray-70);
 }
 
 /* SECTIONS - Navigation */
