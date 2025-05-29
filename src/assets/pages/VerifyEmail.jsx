@@ -25,7 +25,7 @@ const VerifyEmail = () => {
 
         if (verified) {
 
-            const registered = await postRegister({formData})
+            const registered = await postRegister(formData)
             
             if (registered) {
                 console.log('Registration of verified user successful!');
