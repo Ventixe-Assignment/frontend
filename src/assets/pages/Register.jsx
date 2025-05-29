@@ -14,7 +14,7 @@ const Register = () => {
         const emailSent = await postEmail(email)
 
         if (emailSent) {
-            navigate('/verify-email', { state: {email, formData: registerFormData} })
+            navigate('/register/verify-email', { state: {email, formData: registerFormData} })
         }
   
         else {
