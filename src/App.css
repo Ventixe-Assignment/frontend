@@ -162,6 +162,10 @@ h6 {
     font-size: 1rem;
     font-weight: var(--font-bold);
 }
+.title-semibold-14 {
+    font-size: .875rem;
+    font-weight: var(--font-semibold);
+}
 .title-regular-12 {
     font-size: .75rem;
     font-weight: var(--font-regular);
@@ -340,6 +344,12 @@ footer {
     background-color: var(--gray-20);
     border-radius: .8rem;
 }
+.mb-05 {
+    margin-bottom: .5rem;
+}
+.mb-1 {
+    margin-bottom: 1rem;
+}
 
 /* BUTTONS */
 .btn {
@@ -436,7 +446,7 @@ footer {
 }
 }
 
-/* SECTIONS - Login / Register / Verify */
+/* SECTIONS - Login / Register / Verify / Terms */
 .create-account-title {
     text-align: center;
     margin: 2rem 0;
@@ -539,6 +549,12 @@ footer {
 }
 .form-input-verify:focus {
     box-shadow: 0 2px 6px var(--cool-gray-70);
+}
+.term-page > .create-account-title {
+   margin-bottom: .5rem;
+}
+.term-page .divider {
+    margin-bottom: 1rem;
 }
 
 /* SECTIONS - Navigation */

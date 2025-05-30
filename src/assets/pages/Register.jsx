@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { EmailContext } from '../contexts/EmailContext'
 
 const Register = () => {
@@ -51,7 +51,7 @@ const Register = () => {
           </div>
 
           <div className="terms">
-              <input type="checkbox"/> <span>I accept</span> <a href='#'>Terms and Conditions</a>
+              <input type="checkbox"/> <span>I accept</span> <Link to={'/terms'}>Terms and Conditions</Link>
           </div>
 
           <button type="submit" className="btn btn-register-login">Verify Me</button>

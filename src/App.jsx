@@ -13,12 +13,14 @@ import Login from './assets/pages/Login'
 import Register from './assets/pages/Register'
 import Logout from './assets/pages/Logout'
 import VerifyEmail from './assets/pages/VerifyEmail'
+import Terms from './assets/pages/Terms'
 
 function App() {
   return (
     <Routes>
       <Route element={<CenterLayout />}>
         <Route index element={<Login />} />
+        <Route path='/terms' element={<Terms />} />
         <Route path='/register' element={<Register />} />
         <Route path='/register/verify-email' element={<VerifyEmail />} />
       </Route>
