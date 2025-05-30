@@ -42,11 +42,11 @@ const Register = () => {
           <div className="shrink">
               <div className="input-group">
                   <label className="form-label">Password</label>
-                  <input className="form-input" type='password' name='password' value={registerFormData.password} onChange={handleChange} required />
+                  <input className="form-input" type='password' placeholder='Req: 1uppercase, atleast 6 characters ' name='password' value={registerFormData.password} onChange={handleChange} required />
               </div>
               <div className="input-group">
                   <label className="form-label">Confirm Password</label>
-                  <input className="form-input" type='password' name='confirmPassword' value={registerFormData.confirmPassword} onChange={handleChange} required />
+                  <input className="form-input" type='password' placeholder='Type password again...' name='confirmPassword' value={registerFormData.confirmPassword} onChange={handleChange} required />
               </div>
           </div>
 
