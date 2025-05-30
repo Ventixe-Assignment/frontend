@@ -469,6 +469,9 @@ footer {
         box-shadow: 0 0 5px var(--primary-50);
     }
 }
+.form-input[Type='password']::placeholder {
+    color: var(--cool-gray-60);
+}
 .terms {
     margin-top: 1em;
     position: relative;
