@@ -17,7 +17,6 @@ const AuthProvider = ({children}) => {
     const getUser = async () => {
         
         try {
-
             const res = await fetch(`${apiConnection}/user`, {
                 method: 'GET',
                 headers: { 
