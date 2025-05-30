@@ -470,7 +470,7 @@ footer {
     }
 }
 .form-input[Type='password']::placeholder {
-    color: var(--cool-gray-60);
+    color: var(--cool-gray-70);
 }
 .terms {
     margin-top: 1em;
