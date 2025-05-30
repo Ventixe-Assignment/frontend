@@ -1,9 +1,11 @@
-import React, { useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../contexts/AuthContext'
+import { validateBlankSpace } from '../helpers/Validation'
 
 const Login = () => {
     const { postLogin, loginStatus, setLoginStatus, loginFormData, setLoginFormData, resetFormData } = useContext(AuthContext)
+    const [ errors, setErrors ] = useState({})
     const navigate = useNavigate()
     const resetForm = () => {
         resetFormData()
@@ -11,6 +13,18 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        const fieldErrors = {}
+
+        
+        /* Validate blankspaces */ 
+        Object.entries(loginFormData).forEach(([name,value]) => {
+            if (!validateBlankSpace.test(value)) {
+                fieldErrors[name] = "You can not leave this blank"
+            }
+        }) 
+        setErrors(fieldErrors)
+        if (Object.keys(fieldErrors).length > 0) return
+
         var ok = await postLogin()
         
         if (ok) {
@@ -23,6 +37,7 @@ const Login = () => {
     const handleChange = (e) => {
         const { name, value } = e.target
         setLoginFormData(prev => ({...prev, [name]: value }))
+        setErrors({})
         setLoginStatus(null)
     } 
 
@@ -46,10 +61,12 @@ return (
                 <div className='input-group'>
                     <label className='form-label' >Email</label>
                     <input className='form-input' type='email' name='email' value={loginFormData.email} onChange={handleChange} required />
+                    <small className='validatefield'>{errors.email && errors.email}</small>
                 </div>
                 <div className='input-group'>
                     <label className='form-label'>Password</label>
                     <input className='form-input' type='password' name='password' value={loginFormData.password} onChange={handleChange} required />
+                    <small className='validatefield'>{errors.password && errors.password}</small>
                 </div>
             </div>
 
@@ -68,7 +85,7 @@ return (
         )}
 
         <div className='account-already'>
-            <p>Don't have an account?</p> <a href='/register' >Go to Register</a>
+            <p>Don't have an account?</p> <Link to={'/register'} >Go to Register</Link>
         </div>
 
     </div>

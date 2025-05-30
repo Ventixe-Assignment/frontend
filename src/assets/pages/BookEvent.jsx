@@ -40,13 +40,13 @@ const BookEvent = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const fieldErrors = {}
-
+   
+        /* Validate blankspaces */ 
         Object.entries(formData).forEach(([name,value]) => {
             if (!validateBlankSpace.test(value) && name !== 'eventId' && name !== 'ticketQuantity') {
                 fieldErrors[name] = 'Cannot skip this field'
             }
         })
-        
         setErrors(fieldErrors)
         if (Object.keys(fieldErrors).length > 0) return
 
