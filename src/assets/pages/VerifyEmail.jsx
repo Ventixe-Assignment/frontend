@@ -14,6 +14,9 @@ const VerifyEmail = () => {
     const urlEmail = searchUrlParams.get('email') || ''
     const urlCode = searchUrlParams.get('code') || ''
 
+    /* Here the email and code gets set either from the
+    Url if clicked in the message that is sent or from 
+    the form by manually entering code via a useState(setCode) */ 
     const email = formEmail || urlEmail
     const [ code, setCode ] = useState(urlCode || '')
     
