@@ -22,12 +22,6 @@ const Sidebar = ({isOpen, isActive}) => {
                 <p>Bookings</p>
             </div>
         </NavLink>
-        <NavLink to="/invoice" >
-            <div className={`nav-link ${isActive? 'active' : ''}`} >
-                <i className="bi bi-receipt"></i>
-                <p>Invoice</p>
-            </div>
-        </NavLink>
         <Link to="/logout" >
             <div className={`nav-link ${isActive? 'active' : ''}`} id='logout-button'>
                 <i className="bi bi-box-arrow-right"></i>
