@@ -18,6 +18,7 @@ const Bookings = () => {
                 <tr>
                     <th>Event</th>
                     <th>Tickets</th>
+                    <th>Booking Id</th>
                     <th>Booking Date</th>
                     <th>Payment</th>
                 </tr>
