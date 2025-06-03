@@ -74,7 +74,7 @@ const Register = () => {
       </form>
 
       <div className="account-already">
-          <p>Already have an account or Google-account?</p><Link to={'/'}>Login here</Link>
+          <p>Already have an account?</p><Link to={'/'}>Login here</Link>
       </div>
     </div>
   )

@@ -45,17 +45,6 @@ return (
     <div>
         <h1 className='create-account-title'>Login</h1>
 
-        <form method="post" noValidate>
-            <button type="submit" name="provider" value="Google" className="btn btn-external-login">
-                <img src="./icons/google-icon.svg" alt="Google-Icon" />
-                Login with Google
-            </button>
-
-            <div className="text-line">
-                <span>OR</span>
-            </div>
-        </form>
-
         <form method="post" onSubmit={handleSubmit} noValidate >
             <div className='shrink'>
                 <div className='input-group'>
