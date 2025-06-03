@@ -30,7 +30,7 @@ const AuthProvider = ({children}) => {
    
             } else {
                 const data = await res.json()
-                console.log('User fetched Successfully', data)
+                console.log('User fetched Successfully')
                 setUser(data)
                 return true
             }
