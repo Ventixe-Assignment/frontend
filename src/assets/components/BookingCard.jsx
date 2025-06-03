@@ -9,11 +9,11 @@ const BookingCard = ({ booking, event }) => {
             <div className='event-name'>{event.name}</div>
             <div className='event-category'>{event.category}</div>
         </td>
-        <td className='booking-quantity'>{booking.ticketQuantity} ( 10$ per ticket )</td>
+        <td className='booking-quantity'>{booking.ticketQuantity}</td>
         <td className='booking-id'>{booking.id}</td>
         <td className='booking-date'>{new Date(booking.bookingDate).toLocaleString()}</td>
         <td>
-            <Link className='booking-payment'>Total Amount / Pay</Link>
+            <Link className='booking-payment'>Total amount & pay</Link>
         </td>
     </tr>
   )

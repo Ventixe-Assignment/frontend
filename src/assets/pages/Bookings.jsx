@@ -7,8 +7,19 @@ const Bookings = () => {
   const { bookings } = useContext(BookingContext)
   const { events } = useContext(EventContext)
 
-  if (!bookings || bookings.length === 0) {
-    return <h2>No bookings made yet</h2>
+  if (!bookings) {
+    return  (
+      <div className='booking-table'>
+        <h2>Loading bookings...</h2>
+      </div> 
+    )
+  }
+  if (bookings.length === 0) {
+    return (
+      <div className='booking-table'>
+        <h2>No bookings made yet</h2>
+      </div>
+      )
   }
 
   return (
@@ -18,7 +29,7 @@ const Bookings = () => {
                 <tr>
                     <th>Event</th>
                     <th>Tickets</th>
-                    <th>Booking Id</th>
+                    <th id='booking-id'>Booking Id</th>
                     <th>Booking Date</th>
                     <th>Payment</th>
                 </tr>

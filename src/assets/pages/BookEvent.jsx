@@ -23,7 +23,7 @@ const BookEvent = () => {
 
             const timeOut = setTimeout(() => {
                 setBookingStatus(null)
-                navigate('/events')
+                navigate('/bookings')
             }, 1500);
             return () => clearTimeout(timeOut)
         }
