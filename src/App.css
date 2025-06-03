@@ -742,8 +742,51 @@ footer {
     border-radius: .8rem;
 }
 
-/* CARDS - Booking */
-
+/* TABLES - Booking */
+.booking-table {
+  background: var(--cool-gray-10);
+  border-radius: .8rem;
+  box-shadow: 0 4px 10px #3333334b;
+  overflow: hidden;
+  width: 100%;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+thead {
+  width: 100%;
+  background: var(--cool-gray-20);
+  text-align: left;
+  color: var(--gray-100);
+}
+th {
+    color: var(--cool-gray-90);
+    padding: 1rem;
+    border-bottom: 1px solid var(--primary-100);
+}
+td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--cool-gray-30);
+}
+.event-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.event-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 20%;
+}
+.event-name {
+  font-weight: 600;
+  color: var(--gray-100);
+}
+.event-category {
+  font-size: 0.8rem;
+  color: var(--cool-gray-60);
+}
 
 /* CARDS - Event */
 .event-card {
