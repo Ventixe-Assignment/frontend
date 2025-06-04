@@ -65,7 +65,7 @@ const VerifyEmail = () => {
         
                 <button className='btn btn-register-login' type='submit' disabled={loading} >
                     Register Account
-                    {loading && <span className='loading small' />}
+                    {loading && <span className='loading loading-small' />}
                 </button>
             </form>
         </div>
