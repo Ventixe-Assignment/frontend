@@ -64,8 +64,7 @@ const VerifyEmail = () => {
                 <input className='form-input-verify' maxLength={6} type='text' placeholder='Code' value={code} onChange={(e) => setCode(e.target.value)} required/>
         
                 <button className='btn btn-register-login' type='submit' disabled={loading} >
-                    Register Account
-                    {loading && <span className='loading small' />}
+                    {loading ? <span className='btn-loading' /> : 'Register Account'}
                 </button>
             </form>
         </div>

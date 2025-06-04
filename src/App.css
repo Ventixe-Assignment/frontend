@@ -279,7 +279,6 @@ span {
     justify-content: center;
 }
 .loading {
-    display: inline-block;
     border: 5px solid var(--cool-gray-10);
     border-top: 5px solid var(--primary-100);
     border-radius: 50%;
@@ -287,15 +286,18 @@ span {
     height: 40px;
     animation: spin 1s linear infinite;
     margin: 1rem auto;
+}
 
-    &.small {
+.btn-loading {
+    border: 5px solid var(--cool-gray-10);
+    border-top: 5px solid var(--primary-100);
+    border-radius: 50%;
     width: 1rem;
     height: 1rem;
     border-width: 2px;
-    margin: 0 0 0 0.5rem;
     vertical-align: middle;
-  }
 }
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }

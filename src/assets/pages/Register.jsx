@@ -71,8 +71,7 @@ const Register = () => {
                 </div>
 
                 <button type="submit" className="btn btn-register-login" disabled={loading}>
-                    Verify Me
-                    {loading && <span className='loading small' />}
+                    {loading ? <span className='btn-loading' /> : 'Verify Me'}
                 </button>
             </form>
 
