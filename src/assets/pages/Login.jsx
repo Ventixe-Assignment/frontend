@@ -41,15 +41,6 @@ const Login = () => {
         setLoginStatus(null)
     } 
 
-    if (loading) {
-    return (
-        <div className='loading-container'>
-            <h2>Login in progress</h2>
-            <div className='loading'></div>
-        </div>
-    )
-    }
-
     return (
         <div>
             <h1 className='create-account-title'>Login</h1>
@@ -73,7 +64,9 @@ const Login = () => {
                     <span>Remember me</span>
                 </div>
 
-                <button type="submit" className='btn btn-register-login'>Log in</button>
+                <button type="submit" className='btn btn-register-login' disabled={loading}>
+                    {loading ? <span className='loading small' /> : 'Log in'}
+                </button>
             </form>
 
             {loginStatus === 'error' && (
