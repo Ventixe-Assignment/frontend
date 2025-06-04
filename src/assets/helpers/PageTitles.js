@@ -5,7 +5,7 @@ const titles = {
   "/invoices": "My Invoices",
   "/logout": "Logging out"
 };
-// Patterns for dynamic routes
+// Patterns for dynamic routes, got help setting this up
 const dynamicTitles = [
   {
     pattern: /^\/events\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/, 
@@ -16,27 +16,23 @@ const dynamicTitles = [
     title: "Booking Details"
   },
   {
-    pattern: /^\/invoice\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/,
+    pattern: /^\/invoices\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/,
     title: "Invoice Details"
   },
 
 ];
-/**
- * Get title based on the current path.
- * @param {string} path
- * @returns {string} title
- */
+
 function getTitle(path) {
   if (titles[path]) {
     return titles[path];
   }
-  // Check dynamic patterns
+
   for (const route of dynamicTitles) {
     if (route.pattern.test(path)) {
       return route.title;
     }
   }
-  // Default title if no match
+
   return " ";
 }
 export { getTitle };
