@@ -14,6 +14,7 @@ import Logout from './assets/pages/Logout'
 import VerifyEmail from './assets/pages/VerifyEmail'
 import Terms from './assets/pages/Terms'
 import Invoices from './assets/pages/Invoices'
+import InvoiceDetails from './assets/pages/InvoiceDetails'
 
 function App() {
   return (

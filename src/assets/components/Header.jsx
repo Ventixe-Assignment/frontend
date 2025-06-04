@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import  titles  from '../helpers/PageTitles'
+import { getTitle }  from '../helpers/PageTitles'
 import { AuthContext } from '../contexts/AuthContext'
 
 const Header = () => {
   const location = useLocation()
-  const title = titles[location.pathname]
+  const title = getTitle(location.pathname)
   const { getUser, user } = useContext(AuthContext)
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <header>
       <div className='header-left'>
-        <h4 className='header-title'>{title ?? 'Event Details'}</h4>
+        <h4 className='header-title'>{title}</h4>
         <p className='title-regular-12 header-welcome'> 
           {title === 'Home' 
           ? `Welcome Back ${user?.email || 'Guest'}`
