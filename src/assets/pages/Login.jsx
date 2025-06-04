@@ -4,7 +4,7 @@ import { AuthContext } from '../contexts/AuthContext'
 import { validateBlankSpace } from '../helpers/Validation'
 
 const Login = () => {
-    const { postLogin, loginStatus, setLoginStatus, loginFormData, setLoginFormData, resetFormData } = useContext(AuthContext)
+    const { postLogin, loginStatus, setLoginStatus, loginFormData, setLoginFormData, resetFormData, loading } = useContext(AuthContext)
     const [ errors, setErrors ] = useState({})
     const navigate = useNavigate()
     const resetForm = () => {
@@ -41,43 +41,52 @@ const Login = () => {
         setLoginStatus(null)
     } 
 
-return (
-    <div>
-        <h1 className='create-account-title'>Login</h1>
-
-        <form method="post" onSubmit={handleSubmit} noValidate >
-            <div className='shrink'>
-                <div className='input-group'>
-                    <label className='form-label' >Email</label>
-                    <input className='form-input' type='email' name='email' value={loginFormData.email} onChange={handleChange} required />
-                    <small className='validatefield'>{errors.email && errors.email}</small>
-                </div>
-                <div className='input-group'>
-                    <label className='form-label'>Password</label>
-                    <input className='form-input' type='password' name='password' value={loginFormData.password} onChange={handleChange} required />
-                    <small className='validatefield'>{errors.password && errors.password}</small>
-                </div>
-            </div>
-
-            <div className='terms'>
-                <input type='checkbox' name='rememberMe' checked={loginFormData.rememberMe} onChange={(e) => {setLoginFormData(prev => ({ ...prev, rememberMe: e.target.checked }))}} />
-                 <span>Remember me</span>
-            </div>
-
-            <button type="submit" className='btn btn-register-login'>Log in</button>
-        </form>
-
-        {loginStatus === 'error' && (
-            <div className='validatelogin'>
-                <p>The email or password you entered are incorrect</p>
-            </div>
-        )}
-
-        <div className='account-already'>
-            <p>Don't have an account?</p> <Link to={'/register'} >Go to Register</Link>
+    if (loading) {
+    return (
+        <div className='loading-container'>
+            <h2>Login in progress</h2>
+            <div className='loading'></div>
         </div>
+    )
+    }
 
-    </div>
+    return (
+        <div>
+            <h1 className='create-account-title'>Login</h1>
+
+            <form method="post" onSubmit={handleSubmit} noValidate >
+                <div className='shrink'>
+                    <div className='input-group'>
+                        <label className='form-label' >Email</label>
+                        <input className='form-input' type='email' name='email' value={loginFormData.email} onChange={handleChange} required />
+                        <small className='validatefield'>{errors.email && errors.email}</small>
+                    </div>
+                    <div className='input-group'>
+                        <label className='form-label'>Password</label>
+                        <input className='form-input' type='password' name='password' value={loginFormData.password} onChange={handleChange} required />
+                        <small className='validatefield'>{errors.password && errors.password}</small>
+                    </div>
+                </div>
+
+                <div className='terms'>
+                    <input type='checkbox' name='rememberMe' checked={loginFormData.rememberMe} onChange={(e) => {setLoginFormData(prev => ({ ...prev, rememberMe: e.target.checked }))}} />
+                    <span>Remember me</span>
+                </div>
+
+                <button type="submit" className='btn btn-register-login'>Log in</button>
+            </form>
+
+            {loginStatus === 'error' && (
+                <div className='validatelogin'>
+                    <p>The email or password you entered are incorrect</p>
+                </div>
+            )}
+
+            <div className='account-already'>
+                <p>Don't have an account?</p> <Link to={'/register'} >Go to Register</Link>
+            </div>
+
+        </div>
     )
 }
 

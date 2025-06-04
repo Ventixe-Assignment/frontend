@@ -1,25 +1,25 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { BookingContext } from '../contexts/BookingContext'
 import BookingCard from '../components/BookingCard'
 import { EventContext } from '../contexts/EventContext'
 
 const Bookings = () => {
-  const { bookings } = useContext(BookingContext)
+  const { bookings, loading } = useContext(BookingContext)
   const { events } = useContext(EventContext)
 
-  if (!bookings) {
-    return  (
-      <div className='booking-table'>
-        <h2>Loading bookings...</h2>
-      </div> 
-    )
-  }
-  if (bookings.length === 0) {
+  if (loading) {
     return (
-      <div className='booking-table'>
-        <h2>No bookings made yet</h2>
+      <div className='loading-container'>
+        <h2>Loading Bookings</h2>
+        <div className='loading'></div>
       </div>
-      )
+    ) 
+  }
+
+  if (!bookings || bookings.length === 0) {
+    return (
+      <h2>No bookings available</h2>
+    )
   }
 
   return (

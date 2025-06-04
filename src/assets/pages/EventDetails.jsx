@@ -4,11 +4,26 @@ import { Link, useParams } from 'react-router-dom'
 
 const EventDetails = () => {
   const { id } = useParams()
-  const { event, getEvent } = useContext(EventContext)
+  const { event, getEvent, loading } = useContext(EventContext)
 
   useEffect(() => {
     getEvent(id)
   }, [])
+
+  if (loading) {
+    return (
+      <div className='loading-container'>
+        <h2>Loading Event</h2>
+        <div className='loading'></div>
+      </div>
+    ) 
+  }
+
+  if (!event || event.length === 0) {
+    return (
+      <h2>No event available</h2>
+    )
+  }
 
   return (
     <div>

@@ -8,7 +8,7 @@ const VerifyEmail = () => {
     const { state } = useLocation()
     const { formEmail, formData } = state || {}
     const { postVerification } = useContext(EmailContext)
-    const { postRegister } = useContext(AuthContext)
+    const { postRegister, loading } = useContext(AuthContext)
 
     const [ searchUrlParams ] = useSearchParams()
     const urlEmail = searchUrlParams.get('email') || ''
@@ -44,29 +44,31 @@ const VerifyEmail = () => {
         }
     }
 
-  return (
-    <div>
-        <div className='verify-header'>
-            <Link to='/register' className='btn btn-back'>
-                <i className="bi bi-arrow-left"></i>
-            </Link>
-            <h1 className="create-account-title">Go ahead and verify</h1>
+    return (
+        <div>
+            <div className='verify-header'>
+                <Link to='/register' className='btn btn-back'>
+                    <i className="bi bi-arrow-left"></i>
+                </Link>
+                <h1 className="create-account-title">Go ahead and verify</h1>
+            </div>
+            <div className='divider'></div>
+
+            {email ? (
+                <p className='verify-info'>We sent a code to this email: {email}</p>
+            ) : (
+                <p className='verify-info'>Email not provided, Please go back and enter your email.</p>            
+            )}
+
+            <form className='form-verify' method='post' onSubmit={handleSubmit} noValidate>
+                <input className='form-input-verify' maxLength={6} type='text' placeholder='Code' value={code} onChange={(e) => setCode(e.target.value)} required/>
+        
+                <button className='btn btn-register-login' type='submit' disabled={loading} >
+                    {loading ? <span className='loading' /> : 'Register Account'}
+                </button>
+            </form>
         </div>
-        <div className='divider'></div>
-
-        {email ? (
-            <p className='verify-info'>We sent a code to this email: {email}</p>
-        ) : (
-            <p className='verify-info'>Email not provided, Please go back and enter your email.</p>            
-        )}
-
-        <form className='form-verify' method='post' onSubmit={handleSubmit} noValidate>
-            <input className='form-input-verify' maxLength={6} type='text' placeholder='Code' value={code} onChange={(e) => setCode(e.target.value)} required/>
-       
-            <button className='btn btn-register-login' type='submit'>Register Account</button>
-        </form>
-    </div>
-  )
+    )
 }
 
 export default VerifyEmail

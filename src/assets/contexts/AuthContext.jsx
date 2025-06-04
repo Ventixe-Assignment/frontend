@@ -5,6 +5,7 @@ const AuthProvider = ({children}) => {
     const apiConnection = `https://authservice-dmefe0b8adg2hvek.swedencentral-01.azurewebsites.net/api/authentications`
     const [user, setUser] = useState()
     const [loginStatus, setLoginStatus] = useState(null)
+    const [loading, setLoading] = useState(false)
     const [registerStatus, setRegisterStatus] = useState(null)
     const [loginFormData,setLoginFormData] = useState({ email: '', password: '', rememberMe: false })
     const [registerFormData, setRegisterFormData] = useState({ email: '', password: '', confirmPassword: '' })
@@ -43,7 +44,7 @@ const AuthProvider = ({children}) => {
     
 
     const postLogin = async () => {
-
+        setLoading(true)
         try {
             const res = await fetch(`${apiConnection}/login`, {
                 method: 'POST',
@@ -77,10 +78,13 @@ const AuthProvider = ({children}) => {
             setLoginStatus('error')
             return false
         }
+        finally {
+            setLoading(false)
+        }
     }
 
     const postRegister = async (formData) => {
-
+        setLoading(true)
         try {
             const res = await fetch(`${apiConnection}/register`, {
                 method: 'POST',
@@ -104,6 +108,9 @@ const AuthProvider = ({children}) => {
             console.error('Error during registration attempt', error)
             setRegisterStatus('error')
             return false
+        }
+        finally {
+            setLoading(false)
         }
     }
 
@@ -137,7 +144,7 @@ const AuthProvider = ({children}) => {
             registerStatus, setRegisterStatus,
             loginFormData, setLoginFormData,
             registerFormData, setRegisterFormData,
-            user, getUser,
+            user, getUser, loading,
             postLogin, postRegister, postLogout,
             resetFormData
          }}>

@@ -1,11 +1,13 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 
 export const EmailContext = createContext()
 
 const EmailProvider = ({children}) => {
     const apiConnection = `https://emailservice-h6aeb7argpaxgtgs.swedencentral-01.azurewebsites.net/api/emails`
+    const [loading, setLoading] = useState(false)
 
     const postEmail = async ({ email }) => {
+        setLoading(true)
         try {
             const res = await fetch(`${apiConnection}/send`, {
                 method: 'POST',
@@ -28,9 +30,13 @@ const EmailProvider = ({children}) => {
             console.error(`Error posting email: ${ex}`)
             return false
         }
+        finally {
+            setLoading(false)
+        }
     }
 
     const postVerification = async ({ email, code }) => {
+        setLoading(true)
         try {
             const res = await fetch(`${apiConnection}/verify`, {
                 method: 'POST',
@@ -53,6 +59,9 @@ const EmailProvider = ({children}) => {
             console.error(`Error verifying email: ${ex}`)
             return false
         }
+        finally {
+            setLoading(false)
+        }
     }
 
 
@@ -60,7 +69,8 @@ const EmailProvider = ({children}) => {
     return (
         <EmailContext.Provider value={{ 
             postEmail, 
-            postVerification
+            postVerification,
+            loading
             }}>
             {children}
         </EmailContext.Provider>

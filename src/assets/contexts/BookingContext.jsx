@@ -6,6 +6,7 @@ const BookingProvider = ({children}) => {
     const [bookings, setBookings] = useState([])
     const [booking, setBooking] = useState({})
     const [bookingStatus, setBookingStatus] = useState(null)
+    const [loading, setLoading] = useState(false)
     const [formData,setFormData] = useState({ 
     eventId: '', 
     packageId: '',
@@ -23,6 +24,7 @@ const BookingProvider = ({children}) => {
     }
 
     const getBooking = async (id) => {
+        setLoading(true)
         try {
             const res = await fetch(`${apiConnection}/detailed/${id}`)
             const result = await res.json()
@@ -32,9 +34,13 @@ const BookingProvider = ({children}) => {
         catch(error) {
             console.error('Error fetching the booking', error)
         }
+        finally {
+            setLoading(false)
+        }
     }
 
     const postBooking = async () => {
+        setLoading(true)
         try {
             const res = await fetch(apiConnection, {
                 method: 'POST',
@@ -56,6 +62,9 @@ const BookingProvider = ({children}) => {
         catch(error) {
             console.error('Error posting the booking', error)
             setBookingStatus('error')
+        }
+        finally {
+            setLoading(false)
         }
     }
 
@@ -79,7 +88,7 @@ const BookingProvider = ({children}) => {
             bookings, booking,
             getBooking, postBooking, 
             formData, setFormData,
-            resetFormData,
+            resetFormData, loading,
             bookingStatus, setBookingStatus }}>
             {children}
         </BookingContext.Provider>

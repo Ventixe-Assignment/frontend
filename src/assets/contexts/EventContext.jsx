@@ -6,9 +6,11 @@ const EventProvider = ({children}) => {
     const apiConnection = `https://eventservice1-cnczckdzfnaybvg3.swedencentral-01.azurewebsites.net/api/events`
     const [events, setEvents] = useState([])
     const [event, setEvent] = useState({})
+    const [loading, setLoading] = useState(false)
 
 
     const getEvent = async (id) => {
+        setLoading(true)
         try {
             const res = await fetch(apiConnection + `/${id}`)
             const result = await res.json()
@@ -18,21 +20,28 @@ const EventProvider = ({children}) => {
         catch(error) {
             console.error('Error fetching a event', error)
         }
+        finally {
+            setLoading(false)
+        }
     }
 
     const getEventPackages = async (eventId) => {
-    try {
-        const res = await fetch(`${apiConnection}/${eventId}/packages`);
-        const result = await res.json();
-        return result;
-    } catch (err) {
-        console.error("Error fetching packages", err);
-        return [];
-    }
+        setLoading(true)
+        try {
+            const res = await fetch(`${apiConnection}/${eventId}/packages`);
+            const result = await res.json();
+            return result;
+        } 
+        catch (err) {
+            console.error("Error fetching packages", err);
+            return [];
+        }
+        finally {
+            setLoading(false)
+        }
 }
 
     useEffect(() => {
-
         const fetchData = async () => {
         try {
             const res = await fetch(apiConnection)
@@ -47,7 +56,7 @@ const EventProvider = ({children}) => {
     }, [])
 
     return (
-        <EventContext.Provider value={{ events, event, getEvent, getEventPackages }}>
+        <EventContext.Provider value={{ events, event, getEvent, getEventPackages, loading }}>
             {children}
         </EventContext.Provider>
     )
