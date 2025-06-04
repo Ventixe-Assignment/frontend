@@ -6,13 +6,14 @@ import { validateBlankSpace } from '../helpers/Validation.js'
 
 const BookEvent = () => {
     const {id} = useParams()
-    const { event, getEvent } = useContext(EventContext)
-    const {postBooking,formData,setFormData,resetFormData,bookingStatus,setBookingStatus} = useContext(BookingContext)
+    const { event, getEvent, getEventPackages } = useContext(EventContext)
+    const { postBooking,formData,setFormData,resetFormData,bookingStatus,setBookingStatus } = useContext(BookingContext)
     const [ errors, setErrors ] = useState({})
     const navigate = useNavigate()
 
     useEffect(() => {
         getEvent(id)
+        getEventPackages(id)
         setFormData(prev => ({...prev, eventId: id}))
         setBookingStatus(null)
     }, [])
@@ -45,6 +46,9 @@ const BookEvent = () => {
         Object.entries(formData).forEach(([name,value]) => {
             if (!validateBlankSpace.test(value) && name !== 'eventId' && name !== 'ticketQuantity') {
                 fieldErrors[name] = 'Cannot skip this field'
+            }
+            if (!formData.packageId) {
+                fieldErrors.packageId = 'Please select a package';
             }
         })
         setErrors(fieldErrors)
@@ -108,6 +112,20 @@ const BookEvent = () => {
                         <input className='form-input' name='postalCode' value={formData.postalCode} onChange={handleChange} required/>
                         <small className='validatefield'>{errors.postalCode && errors.postalCode}</small>
                     </div>
+                    {event.packages?.length > 0 && (
+                    <div className='input-group'>
+                        <label className='form-label'>Select Package</label>
+                        <select className='form-input' name='packageId' value={formData.packageId} onChange={handleChange} required>
+                        <option value=''> Choose a package </option>
+                        {event.packages.map(p => (
+                            <option key={p.id} value={p.id}>
+                            {p.name} — {p.price} {p.currency}
+                            </option>
+                        ))}
+                        </select>
+                        <small className='validatefield'>{errors.packageId && errors.packageId}</small>
+                    </div>
+                    )}
                     <div className='input-group'>
                         <label className='form-label'>Tickets</label>
                         <select className='form-input ticket' name='ticketQuantity' value={formData.ticketQuantity} onChange={handleChange} required>

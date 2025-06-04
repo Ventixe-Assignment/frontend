@@ -20,6 +20,16 @@ const EventProvider = ({children}) => {
         }
     }
 
+    const getEventPackages = async (eventId) => {
+    try {
+        const res = await fetch(`${apiConnection}/${eventId}/packages`);
+        const result = await res.json();
+        return result;
+    } catch (err) {
+        console.error("Error fetching packages", err);
+        return [];
+    }
+}
 
     useEffect(() => {
 
@@ -37,7 +47,7 @@ const EventProvider = ({children}) => {
     }, [])
 
     return (
-        <EventContext.Provider value={{ events, event, getEvent }}>
+        <EventContext.Provider value={{ events, event, getEvent, getEventPackages }}>
             {children}
         </EventContext.Provider>
     )

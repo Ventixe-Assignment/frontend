@@ -8,6 +8,7 @@ const BookingProvider = ({children}) => {
     const [bookingStatus, setBookingStatus] = useState(null)
     const [formData,setFormData] = useState({ 
     eventId: '', 
+    packageId: '',
     firstName: '',
     lastName: '',
     email: '',
