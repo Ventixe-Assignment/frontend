@@ -13,6 +13,7 @@ import Register from './assets/pages/Register'
 import Logout from './assets/pages/Logout'
 import VerifyEmail from './assets/pages/VerifyEmail'
 import Terms from './assets/pages/Terms'
+import Invoices from './assets/pages/Invoices'
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
         <Route path='/events/:id' element={<EventDetails />} />
         <Route path='/bookings' element={<Bookings />}/>
         <Route path='/bookings/:id' element={<BookEvent />}/>
+        <Route path='/invoices' element={<Invoices />}/>
+        <Route path='/invoices/:id' element={<InvoiceDetails />}/>
         <Route path='/logout' element={<Logout />}/>
       </Route>
     </Routes>
