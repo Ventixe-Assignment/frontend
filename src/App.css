@@ -309,7 +309,8 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100dvh;
+    min-height: 100dvh;
+    padding: 2rem 0;
 
     main {
         width: 95%;
@@ -597,6 +598,9 @@ footer {
 }
 .term-page .divider {
     margin-bottom: 1rem;
+}
+.term-page h5 {
+    color: var(--primary-100)
 }
 
 /* SECTIONS - Navigation */
