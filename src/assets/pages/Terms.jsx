@@ -6,7 +6,7 @@ const Terms = () => {
         <h1 className='create-account-title'>Terms & Conditions</h1>
         <div>
             <div className='divider'></div>
-            <div className='title-regular-12 mb-1'>  Welcome to Ventixe! These Terms and Conditions govern your use of our website and services, including but not limited to event listings, ticket bookings, and any other features we may offer. By accessing or using our services, you agree to comply with and be bound by these Terms. If you do not agree with any part of these Terms, you must not use our services.</div>
+            <div className='title-semibold-14 mb-1'>  Welcome to Ventixe! These Terms and Conditions govern your use of our website and services, including but not limited to event listings, ticket bookings, and any other features we may offer. By accessing or using our services, you agree to comply with and be bound by these Terms. If you do not agree with any part of these Terms, you must not use our services.</div>
           
             <h5>1. Acceptance of Terms</h5>
             <p className='title-regular-14 mb-1'>By using Ventixe, you confirm that you are at least 18 years old or have the consent of a parent or guardian. You agree to provide accurate and complete information when creating an account or making a booking.</p>
