@@ -1035,9 +1035,9 @@ td {
 /* SECTIONS - Invoices */
 .invoice-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 1.5rem;
-    padding: 2rem
+    padding: 1rem 0;
 }
 
 /* CARDS - Invoices */
@@ -1120,3 +1120,5 @@ td {
     color: var(--cool-gray-60);
     background-color: var(--cool-gray-10);
 }
+
+/* SECTION - Invoice Details */

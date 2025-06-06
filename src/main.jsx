@@ -13,15 +13,15 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <EmailProvider>
-          <EventProvider>
-            <BookingProvider>
-              <InvoiceProvider>
+        <InvoiceProvider>
+          <EmailProvider>
+            <EventProvider>
+              <BookingProvider>           
                 <App />
-              </InvoiceProvider>
-            </BookingProvider>
-          </EventProvider>
-        </EmailProvider>
+              </BookingProvider>
+            </EventProvider>
+          </EmailProvider>
+        </InvoiceProvider>
       </AuthProvider>
     </BrowserRouter>
   </StrictMode>,

@@ -11,7 +11,7 @@ const InvoiceCard = ({ invoice }) => {
             </div>
             <div className='list-body'>
                 <div className={`list-status ${invoice.status === 'Pending' ? '' : 'active'}`}>
-                    <p>{invoice.status === 'Pending' ? 'awaiting transaction' : 'paid'}</p>
+                    <p>{invoice.status === 'Pending' ? 'awaiting transaction' : 'transaction successful'}</p>
                 </div>
                 <div className={`list-amount ${invoice.status === 'Pending' ? '' : 'active'} `}>{invoice.totalAmount} {invoice.currency}</div>
             </div>

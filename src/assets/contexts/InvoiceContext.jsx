@@ -8,7 +8,20 @@ const InvoiceProvider = ({children}) => {
     const [invoice, setInvoice] = useState({})
     const [invoices, setInvoices] = useState([])
 
-
+    const getInvoice = async (id) => {
+        setLoading(true)
+        try {
+            const res = await fetch(`${apiConnection}/${id}`)
+            const result = await res.json()
+            setInvoice(result.data)
+        }
+        catch(error) {
+            console.log(`Could not fetch this invoice!: ${id} error message: ${error}`);
+        }
+        finally {
+            setLoading(false)
+        }
+    }
 
     useEffect(() => {
         const getInvoices = async () => {
@@ -26,7 +39,7 @@ const InvoiceProvider = ({children}) => {
     }, [])
 
   return (
-    <InvoiceContext.Provider value={{ invoices }}>
+    <InvoiceContext.Provider value={{ invoices, invoice, getInvoice }}>
         {children}
     </InvoiceContext.Provider>
   )
