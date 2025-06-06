@@ -20,7 +20,17 @@ const BookingProvider = ({children}) => {
     })
     
     const resetFormData = () => {
-        setFormData({...formData, eventId: formData.eventId})
+    setFormData(prev => ({
+        eventId: prev.eventId,
+        packageId: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        city: '',
+        street: '',
+        postalCode: '',
+        ticketQuantity: 1
+    }));
     }
 
     const getBooking = async (id) => {
@@ -58,6 +68,7 @@ const BookingProvider = ({children}) => {
             console.log('Booking Successful')
             setBookingStatus('success')
 
+            await getAllBookings()
             return result.data.id 
         }
         catch (error) {
@@ -70,7 +81,6 @@ const BookingProvider = ({children}) => {
         }
     }
 
-    useEffect(() => {
     const getAllBookings = async () => {
         try {
             const res = await fetch(`${apiConnection}/all`)
@@ -82,6 +92,7 @@ const BookingProvider = ({children}) => {
             console.error('Error fetching all the bookings', error)
         }
     }
+    useEffect(() => {
         getAllBookings()
     }, [])
 
@@ -91,7 +102,8 @@ const BookingProvider = ({children}) => {
             getBooking, postBooking, 
             formData, setFormData,
             resetFormData, loading,
-            bookingStatus, setBookingStatus }}>
+            bookingStatus, setBookingStatus,
+            getAllBookings }}>
             {children}
         </BookingContext.Provider>
     )
