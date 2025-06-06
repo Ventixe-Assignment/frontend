@@ -6,6 +6,7 @@ import EventProvider from './assets/contexts/EventContext.jsx'
 import BookingProvider from './assets/contexts/BookingContext.jsx'
 import AuthProvider from './assets/contexts/AuthContext.jsx'
 import EmailProvider from './assets/contexts/EmailContext.jsx'
+import InvoiceProvider from './assets/contexts/InvoiceContext.jsx'
 
 
 createRoot(document.getElementById('root')).render(
@@ -15,7 +16,9 @@ createRoot(document.getElementById('root')).render(
         <EmailProvider>
           <EventProvider>
             <BookingProvider>
-              <App />
+              <InvoiceProvider>
+                <App />
+              </InvoiceProvider>
             </BookingProvider>
           </EventProvider>
         </EmailProvider>
