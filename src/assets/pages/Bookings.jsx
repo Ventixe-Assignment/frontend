@@ -20,7 +20,7 @@ const Bookings = () => {
 
   if (!bookings || bookings.length === 0) {
     return (
-      <h2>No bookings available</h2>
+      <h2>No Bookings Available</h2>
     )
   }
 

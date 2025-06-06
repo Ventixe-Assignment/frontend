@@ -5,6 +5,9 @@ import InvoiceCard from '../components/InvoiceCard'
 const Invoices = () => {
   const { invoices } = useContext(InvoiceContext)
 
+  if (!invoices) {
+    return <h2>No Invoices Available</h2>
+  }
   return (
     <div className='invoice-grid'>
       {invoices.map(item => (
