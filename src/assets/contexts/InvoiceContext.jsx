@@ -15,39 +15,40 @@ const InvoiceProvider = ({children}) => {
             const packageObj = event.packages.find(p => String(p.id) === formData.packageId)
 
             if (!packageObj) {
-            console.error("Valid package not found.")
-            return false
+                console.error("Valid package not found.")
+                return false
             }
 
             const price = Number(packageObj.price)
             if (isNaN(price) || price < 0.01) {
-            console.error("Package price is invalid or below minimum.")
-            return false
+                console.error("Package price is invalid or below minimum.")
+                return false
             }
 
             const invoiceRequest = {
-            eventId: formData.eventId,
-            userId: bookingId,
-            packagePrice: price,
-            currency: packageObj.currency,
-            ticketCount: Number(formData.ticketQuantity) || 1
+                eventId: formData.eventId,
+                userId: bookingId,
+                packagePrice: price,
+                currency: packageObj.currency,
+                ticketCount: Number(formData.ticketQuantity) || 1
             }
 
             const res = await fetch(apiConnection, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(invoiceRequest)
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(invoiceRequest)
             })
 
             if (!res.ok) {
-            const error = await res.text()
-            console.error("Invoice creation failed:", error)
-            return false
+                const error = await res.text()
+                console.error("Invoice creation failed:", error)
+                return false
             }
 
             await getInvoices()
             return true
-        } catch (err) {
+        } catch(err) {
+
             console.error(`Error creating invoice: ${err}`)
             return false
         } finally {
@@ -64,7 +65,7 @@ const InvoiceProvider = ({children}) => {
                 body: JSON.stringify('PAID')
                 
             })
-            
+
             await getInvoices()
             return true
         }
@@ -103,7 +104,6 @@ const InvoiceProvider = ({children}) => {
         }
     }
     useEffect(() => {
-
         getInvoices()
     }, [])
 

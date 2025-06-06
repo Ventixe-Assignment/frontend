@@ -20,17 +20,7 @@ const BookingProvider = ({children}) => {
     })
     
     const resetFormData = () => {
-    setFormData(prev => ({
-        eventId: prev.eventId,
-        packageId: '',
-        firstName: '',
-        lastName: '',
-        email: '',
-        city: '',
-        street: '',
-        postalCode: '',
-        ticketQuantity: 1
-    }));
+        setFormData({...formData, eventId: formData.eventId})
     }
 
     const getBooking = async (id) => {
