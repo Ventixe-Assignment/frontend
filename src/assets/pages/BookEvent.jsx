@@ -60,9 +60,6 @@ const BookEvent = () => {
         const bookingId = await postBooking()
 
         if (bookingId) {
-            const selectedPackage = event.packages.find(p => p.id === formData.packageId)
-console.log("formData.packageId:", formData.packageId)
-console.log("event.packages IDs:", event.packages.map(p => p.id))
             await postInvoice(bookingId, event, formData)
         }
     }
