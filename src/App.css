@@ -32,6 +32,11 @@
     --darkest-blue: #1C2346;
     --light-yellow: #FFEFC3;
     --yellow: #FFCA39;
+    --dark-yellow: #e9ab00;
+    --lightGreen: #51f0517e;
+    --darkGreen: #0e770e;
+    --lightRed: #e71a1a79;
+    --darkRed: rgb(255, 0, 0);
     --transparent: #ffffff00;
     --original-gray-shade-1: #FFFFFF;
     --original-gray-shade-2: #F7F7F7;
@@ -1027,4 +1032,91 @@ td {
     }
 }
 
+/* SECTIONS - Invoices */
+.invoice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem
+}
 
+/* CARDS - Invoices */
+.invoice-link {
+    transition: all .4s ease-in-out;
+}
+.invoice-link:hover {
+    transform: translateY(-5px);
+}
+.invoice-list {
+    width: 100%;
+    min-height: 140px;
+    border-radius: .8rem;
+    background-color: var(--cool-gray-20);
+    box-shadow: 1px 2px 6px var(--cool-gray-50);
+    padding: .5rem 1rem;
+}
+.list-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem 0;
+}
+.list-id {
+    color: var(--cool-gray-80);
+}
+.list-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.list-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: .2rem;
+    background-color: var(--light-yellow);
+    color: var(--dark-yellow);
+    box-shadow: -2px 1px 6px var(--cool-gray-40);
+    border-radius: .4rem;
+}
+.list-status.active {
+    background-color: var(--lightGreen);
+    color: var(--darkGreen);
+}
+.list-amount {
+    margin: 1rem 0;
+    padding: .5rem;
+    font-size: 2rem;
+    color: var(--darkRed);
+    box-shadow: 0 0 10px var(--lightRed);
+    background-color: var(--cool-gray-10);
+    border-radius: .3rem;
+    transition: all .4s;
+}
+.list-amount:hover {
+    box-shadow: 0 0 30px var(--lightRed);
+}
+.list-amount.active {
+    color: var(--darkGreen);
+    box-shadow: 0 0 10px var(--lightGreen);
+}
+.list-amount.active:hover {
+    box-shadow: 0 0 30px var(--lightGreen);
+}
+.list-footer {
+    width: 100%;
+    margin-top: 1rem;
+}
+.list-date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 200px;
+    padding: .4rem;
+    border-radius: .5rem;
+    gap: 1rem;
+    color: var(--cool-gray-60);
+    background-color: var(--cool-gray-10);
+}

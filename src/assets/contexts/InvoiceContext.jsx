@@ -26,8 +26,7 @@ const InvoiceProvider = ({children}) => {
     }, [])
 
   return (
-    <InvoiceContext.Provider 
-    value={{ invoices  }}>
+    <InvoiceContext.Provider value={{ invoices }}>
         {children}
     </InvoiceContext.Provider>
   )

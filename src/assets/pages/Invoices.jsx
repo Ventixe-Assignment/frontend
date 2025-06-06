@@ -6,10 +6,10 @@ const Invoices = () => {
   const { invoices } = useContext(InvoiceContext)
 
   return (
-    <div>
-      {invoices.map(item => {
+    <div className='invoice-grid'>
+      {invoices.map(item => (
         <InvoiceCard key={item.id} invoice={item} />
-      })}
+      ))}
     </div>
   )
 }
