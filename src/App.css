@@ -1062,7 +1062,9 @@ td {
     padding: .5rem 0;
 }
 .list-id {
+    font-size: 1.2rem;
     color: var(--cool-gray-80);
+    font-weight: var(--font-semibold);
 }
 .list-body {
     display: flex;

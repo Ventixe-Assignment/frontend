@@ -10,12 +10,20 @@ const InvoiceDetails = () => {
 
   useEffect(() => {
     getInvoice(id)
-    getBooking(invoice.userId)
   }, [])
+
+  useEffect(() => {
+    if (invoice.userId) {
+      getBooking(invoice.userId)
+    }
+  }, [])
+
+
 
   return (
     <div>
-      <h1>{invoice.id}{booking.id}</h1>
+      <h1>{invoice.id}</h1>
+      <h2>{booking.id}</h2>
     </div>
   )
 }
