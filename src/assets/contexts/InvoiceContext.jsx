@@ -9,37 +9,50 @@ const InvoiceProvider = ({children}) => {
     const [invoices, setInvoices] = useState([])
 
 
-        const postInvoice = async () => {
-            setLoading(true)
-            try {
-                const invoiceRequest = {
-                eventId: formData.eventId,
-                userId: formData.userId, // <-- ensure this is set in formData
-                packagePrice: parseFloat(event.packages.find(p => p.id === formData.packageId)?.price || 0),
-                currency: event.packages.find(p => p.id === formData.packageId)?.currency || "EUR",
-                ticketCount: parseInt(formData.ticketQuantity || 1)
-                }
+ const postInvoice = async (bookingId, event, formData) => {
+    setLoading(true)
+    try {
+        const packageObj = event.packages.find(p => String(p.id) === String(formData.packageId))
 
-                const res = await fetch(`${apiConnection}`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(invoiceRequest)
-                })
-
-                if (!res.ok) {
-                const error = await res.text()
-                console.error("Invoice creation failed:", error)
-                return false
-                }
-
-                return true
-            } catch (err) {
-                console.error(`Error creating invoice: ${err}`)
-                return false
-            } finally {
-                setLoading(false)
-            }
+        if (!packageObj || isNaN(packageObj.price)) {
+            console.error("Valid package not found or price is invalid.")
+            return false
         }
+
+        const price = parseFloat(packageObj.price)
+        if (price < 0.01) {
+            console.error("Package price is below minimum allowed.")
+            return false
+        }
+
+        const invoiceRequest = {
+            eventId: formData.eventId,
+            userId: bookingId,
+            packagePrice: price,
+            currency: packageObj.currency,
+            ticketCount: parseInt(formData.ticketQuantity || 1)
+        }
+
+        const res = await fetch(`${apiConnection}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(invoiceRequest)
+        })
+
+        if (!res.ok) {
+            const error = await res.text()
+            console.error("Invoice creation failed:", error)
+            return false
+        }
+
+        return true
+    } catch (err) {
+        console.error(`Error creating invoice: ${err}`)
+        return false
+    } finally {
+        setLoading(false)
+    }
+}
 
     const payInvoice = async (id) => {
         setLoading(true)
@@ -58,7 +71,6 @@ const InvoiceProvider = ({children}) => {
         }
         finally {
             setLoading(false)
-            return true
         }
     }
 

@@ -57,9 +57,13 @@ const BookEvent = () => {
         if (Object.keys(fieldErrors).length > 0) return
         /* Validate Ends */ 
 
-        var ok = await postBooking()
-        if (ok) {
-            await postInvoice()
+        const bookingId = await postBooking()
+
+        if (bookingId) {
+            const selectedPackage = event.packages.find(p => p.id === formData.packageId)
+console.log("formData.packageId:", formData.packageId)
+console.log("event.packages IDs:", event.packages.map(p => p.id))
+            await postInvoice(bookingId, event, formData)
         }
     }
 
@@ -124,9 +128,9 @@ const BookEvent = () => {
                         <select className='form-input' name='packageId' value={formData.packageId} onChange={handleChange} required>
                         <option value=''> Choose a package </option>
                         {event.packages.map(p => (
-                            <option key={p.id} value={p.id}>
+                        <option key={p.id} value={String(p.id)}>
                             {p.name} — {p.price} {p.currency}
-                            </option>
+                        </option>
                         ))}
                         </select>
                         <small className='validatefield'>{errors.packageId && errors.packageId}</small>

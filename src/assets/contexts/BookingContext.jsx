@@ -46,22 +46,24 @@ const BookingProvider = ({children}) => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
-
             })
 
-            if(!res.ok) {
+            if (!res.ok) {
                 console.log('Booking Failed!')
                 setBookingStatus('error')
-   
-            } else {
-                console.log('Booking Successful')
-                setBookingStatus('success')
-   
+                return null
             }
+
+            const result = await res.json() 
+            console.log('Booking Successful')
+            setBookingStatus('success')
+
+            return result.data.id 
         }
-        catch(error) {
+        catch (error) {
             console.error('Error posting the booking', error)
             setBookingStatus('error')
+            return null
         }
         finally {
             setLoading(false)
