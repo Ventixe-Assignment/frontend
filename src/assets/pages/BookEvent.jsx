@@ -3,11 +3,13 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { EventContext } from '../contexts/EventContext'
 import { BookingContext } from '../contexts/BookingContext'
 import { validateBlankSpace } from '../helpers/Validation.js'
+import { InvoiceContext } from '../contexts/InvoiceContext.jsx'
 
 const BookEvent = () => {
-    const {id} = useParams()
+    const { id } = useParams()
     const { event, getEvent, getEventPackages } = useContext(EventContext)
     const { postBooking,formData,setFormData,resetFormData,bookingStatus,setBookingStatus } = useContext(BookingContext)
+    const { postInvoice } = useContext(InvoiceContext)
     const [ errors, setErrors ] = useState({})
     const navigate = useNavigate()
 
@@ -53,8 +55,12 @@ const BookEvent = () => {
         })
         setErrors(fieldErrors)
         if (Object.keys(fieldErrors).length > 0) return
+        /* Validate Ends */ 
 
-        await postBooking()
+        var ok = await postBooking()
+        if (ok) {
+            await postInvoice()
+        }
     }
 
     const handleChange = (e) => {

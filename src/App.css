@@ -349,6 +349,12 @@ span {
         grid-template-columns: 250px 1fr;
     }
 }
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
 nav {
     grid-area: nav;
     padding: 1rem 2rem;
@@ -490,6 +496,33 @@ footer {
     background: var(--primary-40);
     border: 1px solid var(--primary-50);
 }
+}
+.btn-pay {
+    color: var(--cool-gray-70);
+    background-color: var(--cool-gray-20);
+    border: none;
+    padding: 1rem 2rem;
+    width: 100%;
+    cursor: pointer;
+    border-radius: .8rem;
+    font-size: 2rem;
+    font-weight: var(--font-medium);
+
+    transition: all .4s ease-in-out;
+
+    i {
+        color: var(--gray-60);
+        font-size: 1.5rem;
+        transition: all .4s ease-in-out;
+    }
+}
+.btn-pay:hover {
+    transform: translateY(-5px);
+    font-weight: var(--font-extrabold);
+    
+    i {
+        color: var(--darkGreen);
+    }
 }
 
 /* SECTIONS - Login / Register / Verify / Terms */
@@ -1124,3 +1157,73 @@ td {
 }
 
 /* SECTION - Invoice Details */
+.invoice-details {
+    background-color: white;
+    border-radius: .8rem;
+    padding: 2rem;
+    margin: 0 auto;
+}
+.grayed {
+    color: var(--gray-60);
+}
+.row-1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+.invoice-dates {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: .2rem;
+}
+.row-2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+    .bill-to {
+        text-align: right;
+    }
+}
+.row-3 {
+    padding: 1rem;
+    border: 1px solid var(--cool-gray-30);
+    border-radius: .5rem;
+    margin-bottom: 4rem;
+
+}
+.ticket-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.ticket-head {
+    width: 100%;
+    font-size: .8rem;
+    background: var(--cool-gray-20);
+    text-align: center;
+}
+.top-left {
+    border-radius: .8rem 0 0 0;
+}
+.top-right {
+    border-radius: 0 .8rem 0  0 ;
+}
+.ticket-head th {
+    color: var(--cool-gray-60);
+    padding: 1rem;
+    border-bottom: 1px solid var(--primary-100);
+}
+.ticket-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--cool-gray-30);
+    text-align: center;
+}
+.ticket-table tr {
+    box-shadow: 0 0 10px var(--primary-30);
+}
+
+

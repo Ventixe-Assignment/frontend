@@ -8,6 +8,60 @@ const InvoiceProvider = ({children}) => {
     const [invoice, setInvoice] = useState({})
     const [invoices, setInvoices] = useState([])
 
+
+        const postInvoice = async () => {
+            setLoading(true)
+            try {
+                const invoiceRequest = {
+                eventId: formData.eventId,
+                userId: formData.userId, // <-- ensure this is set in formData
+                packagePrice: parseFloat(event.packages.find(p => p.id === formData.packageId)?.price || 0),
+                currency: event.packages.find(p => p.id === formData.packageId)?.currency || "EUR",
+                ticketCount: parseInt(formData.ticketQuantity || 1)
+                }
+
+                const res = await fetch(`${apiConnection}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(invoiceRequest)
+                })
+
+                if (!res.ok) {
+                const error = await res.text()
+                console.error("Invoice creation failed:", error)
+                return false
+                }
+
+                return true
+            } catch (err) {
+                console.error(`Error creating invoice: ${err}`)
+                return false
+            } finally {
+                setLoading(false)
+            }
+        }
+
+    const payInvoice = async (id) => {
+        setLoading(true)
+        try {
+            const res = await fetch(`${apiConnection}/${id}/status`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify('PAID')
+                
+            })
+            return true
+        }
+        catch(err){
+            console.log(`Error with payment, maybe no funds?: ${err}`);
+            return false
+        }
+        finally {
+            setLoading(false)
+            return true
+        }
+    }
+
     const getInvoice = async (id) => {
         setLoading(true)
         try {
@@ -39,7 +93,7 @@ const InvoiceProvider = ({children}) => {
     }, [])
 
   return (
-    <InvoiceContext.Provider value={{ invoices, invoice, getInvoice, loading }}>
+    <InvoiceContext.Provider value={{ invoices, invoice, postInvoice ,getInvoice, payInvoice ,loading }}>
         {children}
     </InvoiceContext.Provider>
   )
