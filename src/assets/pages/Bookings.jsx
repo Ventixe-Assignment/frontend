@@ -2,10 +2,12 @@ import React, { useContext } from 'react'
 import { BookingContext } from '../contexts/BookingContext'
 import BookingCard from '../components/BookingCard'
 import { EventContext } from '../contexts/EventContext'
+import { InvoiceContext } from '../contexts/InvoiceContext'
 
 const Bookings = () => {
   const { bookings, loading } = useContext(BookingContext)
   const { events } = useContext(EventContext)
+  const { invoices } = useContext(InvoiceContext)
 
   if (loading) {
     return (
@@ -37,9 +39,9 @@ const Bookings = () => {
             <tbody>
               {bookings.map((item) => {
                 const event = events.find((e) => e.id === item.eventId)
-        
+                const invoice = invoices.find(inv => String(inv.eventId) === String(item.eventId))
                 return (
-                  <BookingCard key={item.id} booking={item} event={event} />
+                  <BookingCard key={item.id} booking={item} event={event} invoice={invoice} />
                 )
               })}
             </tbody>

@@ -45,6 +45,7 @@ const InvoiceProvider = ({children}) => {
             return false
             }
 
+            await getInvoices()
             return true
         } catch (err) {
             console.error(`Error creating invoice: ${err}`)
@@ -63,6 +64,8 @@ const InvoiceProvider = ({children}) => {
                 body: JSON.stringify('PAID')
                 
             })
+            
+            await getInvoices()
             return true
         }
         catch(err){
@@ -89,23 +92,23 @@ const InvoiceProvider = ({children}) => {
         }
     }
 
-    useEffect(() => {
-        const getInvoices = async () => {
-            try {
-                const res = await fetch(apiConnection)
-                const result = await res.json()
-                setInvoices(result.data)
-            }
-            catch (err){
-                console.log(`Error fetching invoices: ${err}`)
-            }
+    const getInvoices = async () => {
+        try {
+            const res = await fetch(apiConnection)
+            const result = await res.json()
+            setInvoices(result.data)
         }
+        catch (err){
+            console.log(`Error fetching invoices: ${err}`)
+        }
+    }
+    useEffect(() => {
 
         getInvoices()
     }, [])
 
   return (
-    <InvoiceContext.Provider value={{ invoices, invoice, postInvoice ,getInvoice, payInvoice ,loading }}>
+    <InvoiceContext.Provider value={{ invoices, invoice, postInvoice ,getInvoice, getInvoices, payInvoice ,loading }}>
         {children}
     </InvoiceContext.Provider>
   )
