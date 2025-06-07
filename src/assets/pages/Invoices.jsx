@@ -1,9 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { InvoiceContext } from '../contexts/InvoiceContext'
 import InvoiceCard from '../components/InvoiceCard'
 
 const Invoices = () => {
-  const { invoices, loading } = useContext(InvoiceContext)
+  const { invoices, getInvoices ,loading } = useContext(InvoiceContext)
+
+  useEffect(() => {
+    const refreshInvoices = async () => {
+      await getInvoices()
+    }
+
+    refreshInvoices()
+  }, [])
 
   if (loading) {
       return (

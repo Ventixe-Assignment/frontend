@@ -1,13 +1,21 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { BookingContext } from '../contexts/BookingContext'
 import BookingCard from '../components/BookingCard'
 import { EventContext } from '../contexts/EventContext'
 import { InvoiceContext } from '../contexts/InvoiceContext'
 
 const Bookings = () => {
-  const { bookings, loading } = useContext(BookingContext)
+  const { bookings, getBookings ,loading } = useContext(BookingContext)
   const { events } = useContext(EventContext)
   const { invoices } = useContext(InvoiceContext)
+
+  useEffect(() => {
+    const refreshBookings = async () => {
+      await getBookings()
+    }
+
+    refreshBookings()
+  }, [])
 
   if (loading) {
     return (
