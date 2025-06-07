@@ -43,7 +43,7 @@ const BookEvent = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const fieldErrors = {}
-   
+
         /* Validate blankspaces */ 
         Object.entries(formData).forEach(([name,value]) => {
             if (!validateBlankSpace.test(value) && name !== 'eventId' && name !== 'ticketQuantity') {
@@ -58,6 +58,7 @@ const BookEvent = () => {
         /* Validate Ends */ 
 
         const bookingId = await postBooking()
+
         if (bookingId) {
             await postInvoice(bookingId, event, formData)
         }
