@@ -70,8 +70,7 @@ const InvoiceProvider = ({children}) => {
             }
             const result = await res.json()
 
-            /* Got this from ai to update with the existing id and not make duplicates */
-            setInvoices(prev => [...prev, result.data])
+            getInvoices()
             return true
         }
         catch(err){
