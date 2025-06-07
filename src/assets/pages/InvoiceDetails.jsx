@@ -21,6 +21,8 @@ const InvoiceDetails = () => {
 
 
   useEffect(() => {
+    if (!invoice) return
+    
     const fetchBooking = async () => {
       if (invoice.userId) {
         await getBooking(invoice.userId)
@@ -31,6 +33,8 @@ const InvoiceDetails = () => {
   }, [invoice.userId])
 
   useEffect(() => {
+    if (!booking) return
+
     const fetchEvent = async () => {
       if (booking.id) {
         await getEvent(booking.eventId)
@@ -145,7 +149,7 @@ const InvoiceDetails = () => {
               </div>
 
               <div className="row-4">
-                  <button onClick={handlePay} disabled={invoice.status === 'PAID'} className="btn-pay">{`${invoice.status === 'Pending' ? 'Pay' : 'Payed'}`} <i className="bi bi-cash-stack"></i></button>
+                  <button onClick={handlePay} disabled={invoice.status === 'PAID'} className="btn-pay">{`${invoice.status === 'Pending' ? 'Pay' : 'Paid'}`} <i className="bi bi-cash-stack"></i></button>
               </div>
         
           </div>
