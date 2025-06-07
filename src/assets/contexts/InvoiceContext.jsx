@@ -58,9 +58,14 @@ const InvoiceProvider = ({children}) => {
             const res = await fetch(`${apiConnection}/${id}/status`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify('PAID')
-                
+                body: JSON.stringify('PAID') 
             })
+
+            if (!res.ok) {
+                const error = await res.text()
+                console.error("Paying invoice failed:", error)
+                return false
+            }
 
             await getInvoices()
             return true

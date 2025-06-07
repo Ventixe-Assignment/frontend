@@ -39,7 +39,7 @@ const Bookings = () => {
             <tbody>
               {bookings.map((item) => {
                 const event = events.find((e) => e.id === item.eventId)
-                const invoice = invoices.find(inv => String(inv.eventId) === String(item.eventId))
+                const invoice = invoices.find(i => i.eventId === item.eventId)
                 return (
                   <BookingCard key={item.id} booking={item} event={event} invoice={invoice} />
                 )
