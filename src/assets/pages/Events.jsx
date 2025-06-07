@@ -14,6 +14,10 @@ const Events = () => {
     )
   }
 
+  if (!events || events.length === 0) {
+    return <h2 className='grayed'>No Events Available</h2>
+  }
+
   return (
     <div>
       {events.map(item => (
