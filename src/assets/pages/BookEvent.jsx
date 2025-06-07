@@ -58,7 +58,6 @@ const BookEvent = () => {
         /* Validate Ends */ 
 
         const bookingId = await postBooking()
-
         if (bookingId) {
             await postInvoice(bookingId, event, formData)
         }
