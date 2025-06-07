@@ -20,9 +20,7 @@ const InvoiceDetails = () => {
   }, [id])
 
 
-  useEffect(() => {
-    if (!invoice) return
-    
+  useEffect(() => {  
     const fetchBooking = async () => {
       if (invoice.userId) {
         await getBooking(invoice.userId)
@@ -33,8 +31,6 @@ const InvoiceDetails = () => {
   }, [invoice.userId])
 
   useEffect(() => {
-    if (!booking) return
-
     const fetchEvent = async () => {
       if (booking.id) {
         await getEvent(booking.eventId)
