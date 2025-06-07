@@ -75,12 +75,7 @@ const BookingProvider = ({children}) => {
             const res = await fetch(`${apiConnection}/all`)
             const result = await res.json()
     
-            if (Array.isArray(result.data)) {
-                setBookings(result.data.filter(b => b && b.eventId))
-            } 
-            else {
-                setBookings([])
-            }
+            setBookings(result.data)
         }
         catch(error) {
             console.error('Error fetching all the bookings', error)
