@@ -5,19 +5,10 @@ import { EventContext } from '../contexts/EventContext'
 import { InvoiceContext } from '../contexts/InvoiceContext'
 
 const Bookings = () => {
-  const { bookings, getAllBookings ,loading, setLoading } = useContext(BookingContext)
+  const { bookings, loading } = useContext(BookingContext)
   const { events } = useContext(EventContext)
   const { invoices } = useContext(InvoiceContext)
 
-  useEffect(() => {
-    setLoading(true)
-    const refreshBookings = async () => {
-      await getAllBookings()
-    }
-
-    refreshBookings()
-    setLoading(false)
-  }, [])
 
   if (loading) {
     return (
@@ -28,7 +19,7 @@ const Bookings = () => {
     ) 
   }
 
-  if (!bookings || !events || !invoices || !item.eventId) {
+  if (!bookings || !events || !invoices) {
     return (
       <h2 className='grayed'>No Bookings Available</h2>
     )
@@ -47,13 +38,15 @@ const Bookings = () => {
                 </tr>
             </thead>
             <tbody>
-              {bookings.map((item) => {
-                const event = events.find(e => e.id === item.eventId)
-                const invoice = invoices.find(i => i.eventId === item.eventId)
-                return (
-                  <BookingCard key={item.id} booking={item} event={event} invoice={invoice} />
-                )
-              })}
+              {bookings
+                .filter(item => item && item.eventId)
+                .map(item => {
+                  const event = events.find(e => e.id === item.eventId)
+                  const invoice = invoices.find(i => i.eventId === item.eventId)
+                  return (
+                    <BookingCard key={item.id} booking={item} event={event} invoice={invoice} />
+                  )
+                })}
             </tbody>
         </table>
     </div>

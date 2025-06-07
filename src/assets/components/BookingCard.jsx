@@ -6,11 +6,8 @@ const BookingCard = ({ booking, event, invoice }) => {
   return (
     <tr>
         <td className='event-info'>
-            {event.imageUrl ? (
-              <img className='event-image' src={event.imageUrl} alt='event image'/>
-
-            ) : (
-              <p>Image loading...</p>
+            {event && event.imageUrl && (
+              <img className='event-image' src={event.imageUrl} alt='event image' />
             )}
             <div className='event-name'>{event.name}</div>
             <div className='event-category'>{event.category}</div>

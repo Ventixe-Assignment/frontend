@@ -42,16 +42,21 @@ const EventProvider = ({children}) => {
 }
 
     useEffect(() => {
+        setLoading(true)
         const fetchData = async () => {
         try {
             const res = await fetch(apiConnection)
             const result = await res.json()
             
             setEvents(result.data)
+            setLoading(false)
         } 
         catch(error) {
             console.error('Error fetching events', error)
         }    
+        finally {
+            setLoading(false)
+        }
     }
         fetchData()
     }, [])

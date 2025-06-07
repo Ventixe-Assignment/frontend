@@ -1,17 +1,9 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { InvoiceContext } from '../contexts/InvoiceContext'
 import InvoiceCard from '../components/InvoiceCard'
 
 const Invoices = () => {
-  const { invoices, getInvoices ,loading } = useContext(InvoiceContext)
-
-  useEffect(() => {
-    const refreshInvoices = async () => {
-      await getInvoices()
-    }
-
-    refreshInvoices()
-  }, [])
+  const { invoices, loading } = useContext(InvoiceContext)
 
   if (loading) {
       return (
@@ -28,8 +20,10 @@ const Invoices = () => {
 
   return (
     <div className='invoice-grid'>
-      {invoices.map(item => (
-        <InvoiceCard key={item.id} invoice={item} />
+      {invoices
+        .filter(item => item && item.id)
+        .map(item => (
+          <InvoiceCard key={item.id} invoice={item} />
       ))}
     </div>
   )

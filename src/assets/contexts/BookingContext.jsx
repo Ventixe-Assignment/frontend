@@ -71,6 +71,7 @@ const BookingProvider = ({children}) => {
     }
 
     const getAllBookings = async () => {
+        setLoading(true)
         try {
             const res = await fetch(`${apiConnection}/all`)
             const result = await res.json()
@@ -79,6 +80,9 @@ const BookingProvider = ({children}) => {
         }
         catch(error) {
             console.error('Error fetching all the bookings', error)
+        }
+        finally {
+            setLoading(false)
         }
     }
     useEffect(() => {
