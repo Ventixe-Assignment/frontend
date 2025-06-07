@@ -57,7 +57,7 @@ const InvoiceProvider = ({children}) => {
     const payInvoice = async (id) => {
         setLoading(true)
         try {
-            const res = await fetch(`${apiConnection}/${id}/status`, {
+            const res = await fetch(`${apiConnection}/status/${id}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify('PAID') 
