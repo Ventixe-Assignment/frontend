@@ -41,7 +41,7 @@ const InvoiceProvider = ({children}) => {
             }
             const result = await res.json()
 
-            getInvoices()
+            setInvoices(prev => [...prev, result.data])
             return true
         } 
         catch(err) {
