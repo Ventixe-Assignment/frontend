@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom'
 
 const BookingCard = ({ booking, event, invoice }) => {
 
+  if (!event || !booking || !invoice) {
+    return (
+      <h2 className='grayed'>No Bookings Available</h2>
+    )
+  }
+
   return (
     <tr>
         <td className='event-info'>
