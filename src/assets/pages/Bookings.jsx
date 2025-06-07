@@ -19,7 +19,7 @@ const Bookings = () => {
     ) 
   }
 
-  if (!bookings || !events || !invoices) {
+  if (!bookings || bookings.length === 0 || !events || events.length === 0 || !invoices || invoices.length === 0) {
     return (
       <h2 className='grayed'>No Bookings Available</h2>
     )
