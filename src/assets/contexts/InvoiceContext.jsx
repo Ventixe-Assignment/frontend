@@ -41,6 +41,7 @@ const InvoiceProvider = ({children}) => {
             }
             const result = await res.json()
 
+            /* NOT SURE IF THIS WORKS!!!!! */ 
             setInvoices(prev => [...prev, result.data])
             return true
         } 

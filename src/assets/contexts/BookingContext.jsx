@@ -58,6 +58,7 @@ const BookingProvider = ({children}) => {
             console.log('Booking Successful')
             setBookingStatus('success')
 
+            getAllBookings()
             return result.data.id 
         }
         catch (error) {
