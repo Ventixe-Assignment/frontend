@@ -46,6 +46,7 @@ const Bookings = () => {
             </thead>
             <tbody>
               {bookings.map((item) => {
+                if (!item) return null; 
                 const event = events.find((e) => e.id === item.eventId)
                 const invoice = invoices.find(i => i.eventId === item.eventId)
                 return (
