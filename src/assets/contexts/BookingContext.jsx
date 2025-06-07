@@ -81,9 +81,7 @@ const BookingProvider = ({children}) => {
             console.error('Error fetching all the bookings', error)
         }
     }
-    useEffect(() => {
-        getAllBookings()
-    }, [])
+    /* erased the useeffect here */
 
     return (
         <BookingContext.Provider value={{ 
