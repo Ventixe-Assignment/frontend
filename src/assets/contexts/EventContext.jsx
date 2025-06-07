@@ -28,7 +28,7 @@ const EventProvider = ({children}) => {
     const getEventPackages = async (eventId) => {
         setLoading(true)
         try {
-            const res = await fetch(`${apiConnection}/${eventId}/packages`);
+            const res = await fetch(`${apiConnection}/packages/${eventId}`);
             const result = await res.json();
             return result;
         } 
