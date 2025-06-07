@@ -5,16 +5,18 @@ import { EventContext } from '../contexts/EventContext'
 import { InvoiceContext } from '../contexts/InvoiceContext'
 
 const Bookings = () => {
-  const { bookings, getAllBookings ,loading } = useContext(BookingContext)
+  const { bookings, getAllBookings ,loading, setLoading } = useContext(BookingContext)
   const { events } = useContext(EventContext)
   const { invoices } = useContext(InvoiceContext)
 
   useEffect(() => {
+    setLoading(true)
     const refreshBookings = async () => {
       await getAllBookings()
     }
 
     refreshBookings()
+    setLoading(false)
   }, [])
 
   if (loading) {
