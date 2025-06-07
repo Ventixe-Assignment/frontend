@@ -4,8 +4,8 @@ import { InvoiceContext } from '../contexts/InvoiceContext'
 import { BookingContext } from '../contexts/BookingContext'
 
 const InvoiceDetails = () => {
-  const { id } = useParams()
   const navigate = useNavigate()
+  const { id } = useParams()
   const { invoice, getInvoice, payInvoice } = useContext(InvoiceContext)
   const { booking, getBooking, loading } = useContext(BookingContext)
 
@@ -13,6 +13,7 @@ const InvoiceDetails = () => {
     const fetchInvoice = async () => {
       await getInvoice(id)
     }
+
     fetchInvoice()
   }, [id])
 
@@ -23,6 +24,7 @@ const InvoiceDetails = () => {
         await getBooking(invoice.userId)
       }
     }
+
     fetchBooking()
   }, [invoice.userId])
 
@@ -46,7 +48,7 @@ const InvoiceDetails = () => {
   }
 
   if (!invoice || invoice.length === 0 || !booking || booking.length === 0) {
-    return <h2 className='grayed'>No Invoice/Booking Found</h2>
+    return (<h2 className='grayed'>No Invoice/Booking Found</h2>)
   }
 
   return (
