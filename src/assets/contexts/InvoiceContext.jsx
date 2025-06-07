@@ -20,6 +20,7 @@ const InvoiceProvider = ({children}) => {
                 return false
             }
 
+            /* Got help setting this up since it needed alot of value entered in from different origins */
             const invoiceRequest = {
                 eventId: formData.eventId,
                 userId: bookingId,
