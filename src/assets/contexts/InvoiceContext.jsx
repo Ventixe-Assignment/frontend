@@ -68,7 +68,7 @@ const InvoiceProvider = ({children}) => {
                 console.error("Paying invoice failed:", error)
                 return false
             }
-
+            
             return true
         }
         catch(err){
@@ -109,7 +109,9 @@ const InvoiceProvider = ({children}) => {
             setLoading(false)
         }
     }
-    /* erased the useeffect here*/ 
+    useEffect(() => {
+        getInvoices()
+    }, [])
 
   return (
     <InvoiceContext.Provider value={{ invoices, invoice, postInvoice ,getInvoice, getInvoices, payInvoice ,loading }}>
