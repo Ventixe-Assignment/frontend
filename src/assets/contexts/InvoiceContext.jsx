@@ -68,9 +68,7 @@ const InvoiceProvider = ({children}) => {
                 console.error("Paying invoice failed:", error)
                 return false
             }
-            const result = await res.json()
-
-            getInvoices()
+            
             return true
         }
         catch(err){
