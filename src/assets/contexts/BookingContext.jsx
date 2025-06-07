@@ -58,7 +58,7 @@ const BookingProvider = ({children}) => {
             console.log('Booking Successful')
             setBookingStatus('success')
 
-            await getAllBookings()
+            setBookings(prev => [...prev, result.data])
             return result.data.id 
         }
         catch (error) {
@@ -76,7 +76,7 @@ const BookingProvider = ({children}) => {
             const res = await fetch(`${apiConnection}/all`)
             const result = await res.json()
     
-            setBookings(result.data)
+            setBookings(prev => [...prev, result.data])
         }
         catch(error) {
             console.error('Error fetching all the bookings', error)

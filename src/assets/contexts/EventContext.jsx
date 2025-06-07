@@ -46,6 +46,7 @@ const EventProvider = ({children}) => {
         try {
             const res = await fetch(apiConnection)
             const result = await res.json()
+            
             setEvents(result.data)
         } 
         catch(error) {

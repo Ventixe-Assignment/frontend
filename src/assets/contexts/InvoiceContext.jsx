@@ -39,8 +39,9 @@ const InvoiceProvider = ({children}) => {
                 console.error("Invoice creation failed:", error)
                 return false
             }
+            const result = await res.json()
 
-            await getInvoices()
+            setInvoices(prev => [...prev, result.data])
             return true
         } 
         catch(err) {
@@ -66,8 +67,9 @@ const InvoiceProvider = ({children}) => {
                 console.error("Paying invoice failed:", error)
                 return false
             }
+            const result = await res.json()
 
-            await getInvoices()
+            setInvoices(prev => [...prev, result.data])
             return true
         }
         catch(err){
