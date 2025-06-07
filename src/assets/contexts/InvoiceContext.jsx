@@ -69,6 +69,7 @@ const InvoiceProvider = ({children}) => {
                 return false
             }
             
+            await getInvoices()
             return true
         }
         catch(err){

@@ -19,7 +19,6 @@ const InvoiceDetails = () => {
     fetchInvoice()
   }, [id])
 
-
   useEffect(() => {  
     const fetchBooking = async () => {
       if (invoice.userId) {
@@ -58,9 +57,9 @@ const InvoiceDetails = () => {
     ) 
   }
 
-  if (!invoice || !booking || !booking.bookingOwner || !event.packages) {
-    return (<h2 className='grayed'>No Invoice/Booking Found</h2>)
-  }
+if (!invoice || !booking || !booking.bookingOwner || !event || !event.packages) {
+  return <h2 className='grayed'>No Invoice/Booking Found</h2>
+}
 
   const pricePackage = event.packages.find(p => p.id === booking.packageId)
 

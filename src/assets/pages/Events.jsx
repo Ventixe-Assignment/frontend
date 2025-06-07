@@ -8,7 +8,7 @@ const Events = () => {
   if (loading) {
     return (
       <div className='loading-container'>
-        <h2>Loading Events</h2>
+        <h2 className='grayed'>Loading Events</h2>
         <div className='loading'></div>
       </div>
     )
