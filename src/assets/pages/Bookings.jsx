@@ -12,7 +12,7 @@ const Bookings = () => {
   if (loading) {
     return (
       <div className='loading-container'>
-        <h2>Loading Bookings</h2>
+        <h2 className='grayed'>Loading Bookings</h2>
         <div className='loading'></div>
       </div>
     ) 
@@ -20,7 +20,7 @@ const Bookings = () => {
 
   if (!bookings || bookings.length === 0) {
     return (
-      <h2>No Bookings Available</h2>
+      <h2 className='grayed'>No Bookings Available</h2>
     )
   }
 

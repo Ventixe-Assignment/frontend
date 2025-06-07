@@ -15,7 +15,7 @@ const Invoices = () => {
   }
 
   if (!invoices || invoices.length === 0) {
-    return <h2>No Invoices Available</h2>
+    return <h2 className='grayed'>No Invoices Available</h2>
   }
 
   return (
