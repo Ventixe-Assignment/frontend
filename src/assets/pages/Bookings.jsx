@@ -5,13 +5,13 @@ import { EventContext } from '../contexts/EventContext'
 import { InvoiceContext } from '../contexts/InvoiceContext'
 
 const Bookings = () => {
-  const { bookings, getBookings ,loading } = useContext(BookingContext)
+  const { bookings, getAllBookings ,loading } = useContext(BookingContext)
   const { events } = useContext(EventContext)
   const { invoices } = useContext(InvoiceContext)
 
   useEffect(() => {
     const refreshBookings = async () => {
-      await getBookings()
+      await getAllBookings()
     }
 
     refreshBookings()
@@ -46,7 +46,6 @@ const Bookings = () => {
             </thead>
             <tbody>
               {bookings.map((item) => {
-                if (!item) return null; 
                 const event = events.find((e) => e.id === item.eventId)
                 const invoice = invoices.find(i => i.eventId === item.eventId)
                 return (
