@@ -5,7 +5,7 @@ const AuthProvider = ({children}) => {
     const apiConnection = `https://authservice-dmefe0b8adg2hvek.swedencentral-01.azurewebsites.net/api/authentications`
     const [user, setUser] = useState()
     const [loginStatus, setLoginStatus] = useState(null)
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
     const [registerStatus, setRegisterStatus] = useState(null)
     const [loginFormData,setLoginFormData] = useState({ email: '', password: '', rememberMe: false })
     const [registerFormData, setRegisterFormData] = useState({ email: '', password: '', confirmPassword: '' })
