@@ -47,7 +47,6 @@ const InvoiceDetails = () => {
       if (ok) {
         navigate('/invoices')
       }
-
   }
 
  if (loading) {
@@ -63,8 +62,7 @@ const InvoiceDetails = () => {
     return (<h2 className='grayed'>No Invoice/Booking Found</h2>)
   }
 
-
-  const pricePackage = event.packages.find((p) => p.id === booking.packageId)
+  const pricePackage = event.packages.find(p => p.id === booking.packageId)
 
   return (
       <div>
