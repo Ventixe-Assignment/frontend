@@ -8,7 +8,7 @@ const Invoices = () => {
   if (loading) {
       return (
       <div className='loading-container'>
-        <h2>Loading Invoices</h2>
+        <h2 className='grayed'>Loading Invoices</h2>
         <div className='loading'></div>
       </div>
     ) 
