@@ -47,11 +47,12 @@ const InvoiceProvider = ({children}) => {
 
             await getInvoices()
             return true
-        } catch(err) {
-
+        } 
+        catch(err) {
             console.error(`Error creating invoice: ${err}`)
             return false
-        } finally {
+        } 
+        finally {
             setLoading(false)
         }
     }
