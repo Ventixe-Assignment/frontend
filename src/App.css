@@ -200,7 +200,7 @@ input, button, label {
     font: inherit;
 }
 input::placeholder {
-    font-size: 12px;
+    font-size: 14px;
     color: var(--gray-50)
 }
 input[type="search"] {
