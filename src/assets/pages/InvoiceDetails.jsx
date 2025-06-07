@@ -47,7 +47,7 @@ const InvoiceDetails = () => {
     ) 
   }
 
-  if (!invoice || invoice.length === 0 || !booking || booking.length === 0) {
+  if (!invoice || !booking || !booking.bookingOwner) {
     return (<h2 className='grayed'>No Invoice/Booking Found</h2>)
   }
 
