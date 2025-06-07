@@ -94,6 +94,7 @@ const InvoiceProvider = ({children}) => {
     }
 
     const getInvoices = async () => {
+        setLoading(true)
         try {
             const res = await fetch(apiConnection)
             const result = await res.json()
@@ -101,6 +102,9 @@ const InvoiceProvider = ({children}) => {
         }
         catch (err){
             console.log(`Error fetching invoices: ${err}`)
+        }
+        finally {
+            setLoading(false)
         }
     }
     useEffect(() => {

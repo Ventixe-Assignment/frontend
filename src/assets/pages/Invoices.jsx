@@ -5,9 +5,13 @@ import InvoiceCard from '../components/InvoiceCard'
 const Invoices = () => {
   const { invoices } = useContext(InvoiceContext)
 
-  if (!invoices) {
+  
+
+
+  if (!invoices || invoices.length === 0) {
     return <h2>No Invoices Available</h2>
   }
+
   return (
     <div className='invoice-grid'>
       {invoices.map(item => (
