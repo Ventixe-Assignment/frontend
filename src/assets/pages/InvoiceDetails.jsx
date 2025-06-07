@@ -2,12 +2,14 @@ import React, { useContext, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { InvoiceContext } from '../contexts/InvoiceContext'
 import { BookingContext } from '../contexts/BookingContext'
+import { EventContext } from '../contexts/EventContext'
 
 const InvoiceDetails = () => {
   const navigate = useNavigate()
   const { id } = useParams()
   const { invoice, getInvoice, payInvoice } = useContext(InvoiceContext)
   const { booking, getBooking, loading } = useContext(BookingContext)
+  const { event, getEvent } = useContext(EventContext)
 
   useEffect(() => {
     const fetchInvoice = async () => {
@@ -28,6 +30,16 @@ const InvoiceDetails = () => {
     fetchBooking()
   }, [invoice.userId])
 
+  useEffect(() => {
+    const fetchEvent = async () => {
+      if (booking.id) {
+        await getEvent(booking.eventId)
+      }
+    }
+
+    fetchEvent()
+  }, [booking.eventId])
+
   const handlePay = async (e) => {
       e.preventDefault()
       var ok = await payInvoice(id)
@@ -47,9 +59,12 @@ const InvoiceDetails = () => {
     ) 
   }
 
-  if (!invoice || !booking || !booking.bookingOwner) {
+  if (!invoice || !booking || !booking.bookingOwner || !event.packages) {
     return (<h2 className='grayed'>No Invoice/Booking Found</h2>)
   }
+
+
+  const pricePackage = event.packages.find((p) => p.id === booking.packageId)
 
   return (
       <div>
@@ -110,10 +125,10 @@ const InvoiceDetails = () => {
                       </thead>
                       <tbody>
                           <tr>
-                              <td>Diamond</td>
-                              <td>250 {invoice.currency}</td>
+                              <td>{pricePackage.name}</td>
+                              <td>{pricePackage.price} {pricePackage.currency}</td>
                               <td>{booking.ticketQuantity}</td>
-                              <td>1250 {invoice.currency}</td>
+                              <td>{pricePackage.price * booking.ticketQuantity} {invoice.currency}</td>
                           </tr>
                           <tr>
                               <td>Fee</td>

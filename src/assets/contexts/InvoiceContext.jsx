@@ -12,25 +12,20 @@ const InvoiceProvider = ({children}) => {
     const postInvoice = async (bookingId, event, formData) => {
         setLoading(true)
         try {
-            const packageObj = event.packages.find(p => String(p.id) === formData.packageId)
+            /* NOTICE! Select allways returns values as strings so I have to convert them to be able to make comparison */
+            const packageData = event.packages.find(p => p.id === Number(formData.packageId))
 
-            if (!packageObj) {
+            if (!packageData) {
                 console.error("Valid package not found.")
-                return false
-            }
-
-            const price = Number(packageObj.price)
-            if (isNaN(price) || price < 0.01) {
-                console.error("Package price is invalid or below minimum.")
                 return false
             }
 
             const invoiceRequest = {
                 eventId: formData.eventId,
                 userId: bookingId,
-                packagePrice: price,
-                currency: packageObj.currency,
-                ticketCount: Number(formData.ticketQuantity) || 1
+                packagePrice: Number(packageData.price),
+                currency: packageData.currency,
+                ticketCount: Number(formData.ticketQuantity)
             }
 
             const res = await fetch(apiConnection, {

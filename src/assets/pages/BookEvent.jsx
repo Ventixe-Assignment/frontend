@@ -65,6 +65,8 @@ const BookEvent = () => {
     }
 
     const handleChange = (e) => {
+        /* Read that when making changes here with SELECT you can convert to INT right away */
+
         const { name, value } = e.target
         setFormData(prev => ({...prev, [name]: value }))
         setErrors({})
@@ -125,7 +127,7 @@ const BookEvent = () => {
                         <select className='form-input' name='packageId' value={formData.packageId} onChange={handleChange} required>
                         <option value=''> Choose a package </option>
                         {event.packages.map(p => (
-                        <option key={p.id} value={String(p.id)}>
+                        <option key={p.id} value={p.id}>
                             {p.name} — {p.price} {p.currency}
                         </option>
                         ))}
