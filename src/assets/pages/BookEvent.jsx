@@ -8,7 +8,7 @@ import { InvoiceContext } from '../contexts/InvoiceContext.jsx'
 const BookEvent = () => {
     const { id } = useParams()
     const { event, getEvent, getAllEvents ,getEventPackages } = useContext(EventContext)
-    const { postBooking,getAllBookings,formData,setFormData,resetFormData,bookingStatus,setBookingStatus } = useContext(BookingContext)
+    const { postBooking,getAllBookings,formData,setFormData,resetFormData,bookingStatus,setBookingStatus, loadingBooking } = useContext(BookingContext)
     const { postInvoice, getInvoices } = useContext(InvoiceContext)
     const [ errors, setErrors ] = useState({})
     const navigate = useNavigate()
@@ -23,7 +23,6 @@ const BookEvent = () => {
     useEffect(() => {
         if (bookingStatus === 'success') {
             resetFormData()
-
             const timeOut = setTimeout(() => {
                 setBookingStatus(null)
             }, 1500);
@@ -153,7 +152,7 @@ const BookEvent = () => {
                     </div>
                 </div>
                 
-                <button type="submit"  className='btn btn-register-login'>Book - {event.name}</button>
+                <button type="submit" disabled={loadingBooking}   className='btn btn-register-login'>Book - {event.name}</button>
             </form>
 
             {bookingStatus === 'success' && (
