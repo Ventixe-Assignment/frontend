@@ -22,7 +22,7 @@ const BookEvent = () => {
 
     useEffect(() => {
         if (bookingStatus === 'success') {
-            resetFormData()
+            resetFormData(id)
             const timeOut = setTimeout(() => {
                 setBookingStatus(null)
             }, 1500);
