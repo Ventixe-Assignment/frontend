@@ -77,15 +77,17 @@ const BookingProvider = ({children}) => {
             const result = await res.json()
     
             setBookings(result.data)
+            return true
         }
         catch(error) {
             console.error('Error fetching all the bookings', error)
+            return false
         }
         finally {
             setLoadingBooking(false)
         }
     }
-    
+
     useEffect(() => {
         getAllBookings()
     }, [])
