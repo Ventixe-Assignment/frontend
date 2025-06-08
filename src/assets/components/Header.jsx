@@ -20,7 +20,7 @@ const Header = () => {
         <h4 className='header-title'>{title}</h4>
         <p className='title-regular-12 header-welcome'> 
           {title === 'Home' 
-          ? `Welcome Back ${user?.email || 'Guest'}`
+          ? `Welcome Back ${user?.email || 'Guest'}, enjoy the view!`
           : ' ' }
 
         </p>
