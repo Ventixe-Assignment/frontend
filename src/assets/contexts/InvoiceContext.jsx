@@ -69,7 +69,7 @@ const InvoiceProvider = ({children}) => {
                 console.error("Paying invoice failed:", error)
                 return false
             }
-            
+
             await getInvoices()
             return true
         }

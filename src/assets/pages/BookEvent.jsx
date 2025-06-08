@@ -60,8 +60,8 @@ const BookEvent = () => {
             var createInvoice = await postInvoice(bookingId, event, formData)
             if (createInvoice) {
                 await getAllBookings()
-                await getAllEvents()
                 await getInvoices()
+                await getAllEvents()
                 navigate('/bookings')
             }
         }

@@ -104,7 +104,7 @@ if (!invoice || !booking || !booking.bookingOwner || !event || !event.packages) 
                       <p className="mb-1 grayed">Bill To</p>
                       <h6 className="mb-1">{booking.bookingOwner.firstName} {booking.bookingOwner?.lastName}</h6>
 
-                      <p className="mb-05 grayed">{booking.bookingOwner.bookingAddress.postalCode} {booking.bookingOwner.bookingAddress.street}, {booking.bookingOwner.bookingAddress.city}</p>
+                      <p className="mb-05 grayed">{booking.bookingOwner.bookingAddress.city}, {booking.bookingOwner.bookingAddress.street}, {booking.bookingOwner.bookingAddress.postalCode} </p>
                       <p className="mb-05 grayed">{booking.bookingOwner.email}</p>
                       <p className="grayed">{booking.bookingOwner.phoneNumber ?? 'Phone-number not provided'}</p>
                   </div>
