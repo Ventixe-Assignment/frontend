@@ -30,7 +30,6 @@ const BookEvent = () => {
         }
 
         if (bookingStatus === 'error') {
-
             const timeOut = setTimeout(() => {
                 setBookingStatus(null)
             }, 1500);
