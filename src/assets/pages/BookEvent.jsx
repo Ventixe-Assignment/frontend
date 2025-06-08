@@ -7,9 +7,9 @@ import { InvoiceContext } from '../contexts/InvoiceContext.jsx'
 
 const BookEvent = () => {
     const { id } = useParams()
-    const { event, getEvent, getEventPackages } = useContext(EventContext)
+    const { event, getEvent, getAllEvents ,getEventPackages } = useContext(EventContext)
     const { postBooking,getAllBookings,formData,setFormData,resetFormData,bookingStatus,setBookingStatus } = useContext(BookingContext)
-    const { postInvoice } = useContext(InvoiceContext)
+    const { postInvoice, getInvoices } = useContext(InvoiceContext)
     const [ errors, setErrors ] = useState({})
     const navigate = useNavigate()
 
@@ -61,10 +61,10 @@ const BookEvent = () => {
         if (bookingId) {
             var createInvoice = await postInvoice(bookingId, event, formData)
             if (createInvoice) {
-                var refreshBookings = await getAllBookings()
-                if (refreshBookings) {           
-                    navigate('/bookings')
-                }
+                await getAllBookings()
+                await getAllEvents()
+                await getInvoices()
+                navigate('/bookings')
             }
         }
     }

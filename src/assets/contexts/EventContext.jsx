@@ -39,29 +39,31 @@ const EventProvider = ({children}) => {
         finally {
             setLoadingEvent(false)
         }
-}
+    }
+
+    const getAllEvents = async () => {
+    setLoadingEvent(true)
+    try {
+        const res = await fetch(apiConnection)
+        const result = await res.json()
+        
+        setEvents(result.data)
+    } 
+    catch(error) {
+        console.error('Error fetching events', error)
+    }    
+    finally {
+        setLoadingEvent(false)
+    }
+    }
 
     useEffect(() => {
-        setLoadingEvent(true)
-        const fetchData = async () => {
-        try {
-            const res = await fetch(apiConnection)
-            const result = await res.json()
-            
-            setEvents(result.data)
-        } 
-        catch(error) {
-            console.error('Error fetching events', error)
-        }    
-        finally {
-            setLoadingEvent(false)
-        }
-    }
-        fetchData()
+        getAllEvents()
     }, [])
+    
 
     return (
-        <EventContext.Provider value={{ events, event, getEvent, getEventPackages, loadingEvent }}>
+        <EventContext.Provider value={{ events, event, getEvent, getAllEvents, getEventPackages, loadingEvent }}>
             {children}
         </EventContext.Provider>
     )
