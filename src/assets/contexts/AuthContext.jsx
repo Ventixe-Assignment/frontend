@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useCallback, useState } from "react";
 export const AuthContext = createContext()
 
 const AuthProvider = ({children}) => {
@@ -15,9 +15,12 @@ const AuthProvider = ({children}) => {
         setLoginFormData({ email: "", password: "", rememberMe: false })
     }
 
-    const getUser = async () => {
-        
+    const getUser = useCallback(async () => {
+        if (!token) return
+        if (user) return
+
         try {
+            setLoading(true)
             const res = await fetch(`${apiConnection}/user`, {
                 method: 'GET',
                 headers: { 
@@ -40,8 +43,11 @@ const AuthProvider = ({children}) => {
             console.error('Error during fetching user attempt', error)
             return false
         }
-    }
-    
+        finally {
+            setLoading(false)
+        }
+
+    }, [token])
 
     const postLogin = async () => {
         setLoading(true)

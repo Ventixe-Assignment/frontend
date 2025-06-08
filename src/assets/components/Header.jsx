@@ -9,12 +9,10 @@ const Header = () => {
   const { getUser, user } = useContext(AuthContext)
 
   useEffect(() => {
-      const reveilUser = async () => {
-        await getUser()
-      }
-
-      reveilUser()
-  }, [])
+    if (!user) {
+      getUser()
+    }
+  }, [getUser, user])
 
   return (
     <header>
