@@ -8,7 +8,6 @@ const Bookings = () => {
   const { bookings, loadingBooking } = useContext(BookingContext)
   const { events, loadingEvent } = useContext(EventContext)
   const { invoices, loadingInvoice } = useContext(InvoiceContext)
-
   const loadingAllContent = loadingBooking || loadingEvent || loadingInvoice
 
   if (loadingAllContent) {
@@ -39,9 +38,7 @@ const Bookings = () => {
                 </tr>
             </thead>
             <tbody>
-              {bookings
-                .filter(item => item && item.id)
-                .map(item => {
+              {bookings.map(item => {
                   const event = events.find(e => e.id === item.eventId)
                   const invoice = invoices.find(i => i.eventId === item.eventId)
                   return (

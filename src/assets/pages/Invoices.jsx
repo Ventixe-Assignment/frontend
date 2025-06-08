@@ -14,15 +14,13 @@ const Invoices = () => {
     ) 
   }
 
-  if ( invoices.length === 0 ) {
+  if (invoices.length === 0) {
     return <h2 className='grayed'>No Invoices Available</h2>
   }
 
   return (
     <div className='invoice-grid'>
-      {invoices
-        .filter(item => item && item.id)
-        .map(item => (
+      {invoices.map(item => (
           <InvoiceCard key={item.id} invoice={item} />
       ))}
     </div>

@@ -26,7 +26,6 @@ const BookEvent = () => {
 
             const timeOut = setTimeout(() => {
                 setBookingStatus(null)
-                navigate('/bookings')
             }, 1500);
             return () => clearTimeout(timeOut)
         }
@@ -60,17 +59,18 @@ const BookEvent = () => {
         const bookingId = await postBooking()
 
         if (bookingId) {
-            var result = await postInvoice(bookingId, event, formData)
-            if (result) {
-                await getAllBookings()
+            var createInvoice = await postInvoice(bookingId, event, formData)
+            if (createInvoice) {
+                var refreshBookings = await getAllBookings()
+                if (refreshBookings) {           
+                    navigate('/bookings')
+                }
             }
         }
-
     }
 
     const handleChange = (e) => {
         /* Read that when making changes here with SELECT you can convert to INT right away */
-
         const { name, value } = e.target
         setFormData(prev => ({...prev, [name]: value }))
         setErrors({})

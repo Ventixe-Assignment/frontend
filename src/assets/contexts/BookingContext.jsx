@@ -85,6 +85,7 @@ const BookingProvider = ({children}) => {
             setLoadingBooking(false)
         }
     }
+    
     useEffect(() => {
         getAllBookings()
     }, [])
