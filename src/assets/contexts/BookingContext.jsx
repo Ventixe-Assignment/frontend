@@ -6,7 +6,7 @@ const BookingProvider = ({children}) => {
     const [bookings, setBookings] = useState([])
     const [booking, setBooking] = useState({})
     const [bookingStatus, setBookingStatus] = useState(null)
-    const [loading, setLoading] = useState(false)
+    const [loadingBooking, setLoadingBooking] = useState(false)
     const [formData,setFormData] = useState({ 
     eventId: '', 
     packageId: '',
@@ -24,7 +24,7 @@ const BookingProvider = ({children}) => {
     }
 
     const getBooking = async (id) => {
-        setLoading(true)
+        setLoadingBooking(true)
         try {
             const res = await fetch(`${apiConnection}/detailed/${id}`)
             const result = await res.json()
@@ -35,12 +35,12 @@ const BookingProvider = ({children}) => {
             console.error('Error fetching the booking', error)
         }
         finally {
-            setLoading(false)
+            setLoadingBooking(false)
         }
     }
 
     const postBooking = async () => {
-        setLoading(true)
+        setLoadingBooking(true)
         try {
             const res = await fetch(apiConnection, {
                 method: 'POST',
@@ -58,7 +58,6 @@ const BookingProvider = ({children}) => {
             console.log('Booking Successful')
             setBookingStatus('success')
 
-            await getAllBookings()
             return result.data.id 
         }
         catch (error) {
@@ -67,12 +66,12 @@ const BookingProvider = ({children}) => {
             return null
         }
         finally {
-            setLoading(false)
+            setLoadingBooking(false)
         }
     }
 
     const getAllBookings = async () => {
-        setLoading(true)
+        setLoadingBooking(true)
         try {
             const res = await fetch(`${apiConnection}/all`)
             const result = await res.json()
@@ -83,7 +82,7 @@ const BookingProvider = ({children}) => {
             console.error('Error fetching all the bookings', error)
         }
         finally {
-            setLoading(false)
+            setLoadingBooking(false)
         }
     }
     useEffect(() => {
@@ -95,7 +94,7 @@ const BookingProvider = ({children}) => {
             bookings, booking,
             getBooking, postBooking, 
             formData, setFormData,
-            resetFormData, loading,
+            resetFormData, loadingBooking,
             bookingStatus, setBookingStatus,
             getAllBookings }}>
             {children}

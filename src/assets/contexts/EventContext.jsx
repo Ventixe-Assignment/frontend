@@ -6,11 +6,11 @@ const EventProvider = ({children}) => {
     const apiConnection = `https://eventservice1-cnczckdzfnaybvg3.swedencentral-01.azurewebsites.net/api/events`
     const [events, setEvents] = useState([])
     const [event, setEvent] = useState({})
-    const [loading, setLoading] = useState(false)
+    const [loadingEvent, setLoadingEvent] = useState(false)
 
 
     const getEvent = async (id) => {
-        setLoading(true)
+        setLoadingEvent(true)
         try {
             const res = await fetch(apiConnection + `/${id}`)
             const result = await res.json()
@@ -21,12 +21,12 @@ const EventProvider = ({children}) => {
             console.error('Error fetching a event', error)
         }
         finally {
-            setLoading(false)
+            setLoadingEvent(false)
         }
     }
 
     const getEventPackages = async (eventId) => {
-        setLoading(true)
+        setLoadingEvent(true)
         try {
             const res = await fetch(`${apiConnection}/packages/${eventId}`);
             const result = await res.json();
@@ -37,32 +37,31 @@ const EventProvider = ({children}) => {
             return [];
         }
         finally {
-            setLoading(false)
+            setLoadingEvent(false)
         }
 }
 
     useEffect(() => {
-        setLoading(true)
+        setLoadingEvent(true)
         const fetchData = async () => {
         try {
             const res = await fetch(apiConnection)
             const result = await res.json()
             
             setEvents(result.data)
-            setLoading(false)
         } 
         catch(error) {
             console.error('Error fetching events', error)
         }    
         finally {
-            setLoading(false)
+            setLoadingEvent(false)
         }
     }
         fetchData()
     }, [])
 
     return (
-        <EventContext.Provider value={{ events, event, getEvent, getEventPackages, loading }}>
+        <EventContext.Provider value={{ events, event, getEvent, getEventPackages, loadingEvent }}>
             {children}
         </EventContext.Provider>
     )

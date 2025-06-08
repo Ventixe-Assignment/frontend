@@ -3,9 +3,9 @@ import { EventContext } from '../contexts/EventContext'
 import EventCard from '../components/EventCard'
 
 const Events = () => {
-  const { events, loading } = useContext(EventContext)
+  const { events, loadingEvent } = useContext(EventContext)
 
-  if (loading) {
+  if (loadingEvent) {
     return (
       <div className='loading-container'>
         <h2 className='grayed'>Loading Events</h2>

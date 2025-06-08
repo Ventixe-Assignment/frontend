@@ -1,16 +1,17 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { BookingContext } from '../contexts/BookingContext'
 import BookingCard from '../components/BookingCard'
 import { EventContext } from '../contexts/EventContext'
 import { InvoiceContext } from '../contexts/InvoiceContext'
 
 const Bookings = () => {
-  const { bookings, loading } = useContext(BookingContext)
-  const { events } = useContext(EventContext)
-  const { invoices } = useContext(InvoiceContext)
+  const { bookings, loadingBooking } = useContext(BookingContext)
+  const { events, loadingEvent } = useContext(EventContext)
+  const { invoices, loadingInvoice } = useContext(InvoiceContext)
 
+  const loadingAllContent = loadingBooking || loadingEvent || loadingInvoice
 
-  if (loading) {
+  if (loadingAllContent) {
     return (
       <div className='loading-container'>
         <h2 className='grayed'>Loading Bookings</h2>
@@ -19,7 +20,7 @@ const Bookings = () => {
     ) 
   }
 
-  if (!bookings || bookings.length === 0 || !events || events.length === 0 || !invoices || invoices.length === 0) {
+  if (bookings.length === 0 || events.length === 0 || invoices.length === 0) {
     return (
       <h2 className='grayed'>No Bookings Available</h2>
     )
@@ -39,7 +40,7 @@ const Bookings = () => {
             </thead>
             <tbody>
               {bookings
-                .filter(item => item && item.eventId)
+                .filter(item => item && item.id)
                 .map(item => {
                   const event = events.find(e => e.id === item.eventId)
                   const invoice = invoices.find(i => i.eventId === item.eventId)

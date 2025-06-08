@@ -3,9 +3,9 @@ import { InvoiceContext } from '../contexts/InvoiceContext'
 import InvoiceCard from '../components/InvoiceCard'
 
 const Invoices = () => {
-  const { invoices, loading } = useContext(InvoiceContext)
+  const { invoices, loadingInvoice } = useContext(InvoiceContext)
 
-  if (loading) {
+  if (loadingInvoice) {
       return (
       <div className='loading-container'>
         <h2 className='grayed'>Loading Invoices</h2>
@@ -14,7 +14,7 @@ const Invoices = () => {
     ) 
   }
 
-  if (!invoices || invoices.length === 0) {
+  if ( invoices.length === 0 ) {
     return <h2 className='grayed'>No Invoices Available</h2>
   }
 

@@ -7,9 +7,11 @@ import { EventContext } from '../contexts/EventContext'
 const InvoiceDetails = () => {
   const navigate = useNavigate()
   const { id } = useParams()
-  const { invoice, getInvoice, payInvoice } = useContext(InvoiceContext)
-  const { booking, getBooking, loading } = useContext(BookingContext)
-  const { event, getEvent } = useContext(EventContext)
+  const { invoice, getInvoice, payInvoice, loadingInvoice } = useContext(InvoiceContext)
+  const { booking, getBooking, loadingBooking } = useContext(BookingContext)
+  const { event, getEvent, loadingEvent } = useContext(EventContext)
+  const loadingNotComplete = loadingBooking || loadingEvent || loadingInvoice
+
 
   useEffect(() => {
     const fetchInvoice = async () => {
@@ -48,7 +50,7 @@ const InvoiceDetails = () => {
       }
   }
 
- if (loading) {
+ if (loadingNotComplete) {
     return (
       <div className='loading-container'>
         <h2 className='grayed'>Loading Invoice & Bookings Data</h2>

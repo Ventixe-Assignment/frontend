@@ -4,13 +4,13 @@ import { Link, useParams } from 'react-router-dom'
 
 const EventDetails = () => {
   const { id } = useParams()
-  const { event, getEvent, loading } = useContext(EventContext)
+  const { event, getEvent, loadingEvent } = useContext(EventContext)
 
   useEffect(() => {
     getEvent(id)
   }, [])
 
-  if (loading) {
+  if (loadingEvent) {
     return (
       <div className='loading-container'>
         <h2>Loading Event</h2>

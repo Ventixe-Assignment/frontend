@@ -4,13 +4,13 @@ export const InvoiceContext = createContext()
 
 const InvoiceProvider = ({children}) => {
     const apiConnection = `https://invoiceservice-gmafbqd0gjg8abdf.swedencentral-01.azurewebsites.net/api/invoices`
-    const [loading, setLoading] = useState(false)
+    const [loadingInvoice, setLoadingInvoice] = useState(false)
     const [invoice, setInvoice] = useState({})
     const [invoices, setInvoices] = useState([])
 
 
     const postInvoice = async (bookingId, event, formData) => {
-        setLoading(true)
+        setLoadingInvoice(true)
         try {
             /* NOTICE! Select allways returns values as strings so I have to convert them to be able to make comparison */
             const packageData = event.packages.find(p => p.id === Number(formData.packageId))
@@ -51,12 +51,12 @@ const InvoiceProvider = ({children}) => {
             return false
         } 
         finally {
-            setLoading(false)
+            setLoadingInvoice(false)
         }
     }
 
     const payInvoice = async (id) => {
-        setLoading(true)
+        setLoadingInvoice(true)
         try {
             const res = await fetch(`${apiConnection}/status/${id}`, {
                 method: 'PATCH',
@@ -78,12 +78,12 @@ const InvoiceProvider = ({children}) => {
             return false
         }
         finally {
-            setLoading(false)
+            setLoadingInvoice(false)
         }
     }
 
     const getInvoice = async (id) => {
-        setLoading(true)
+        setLoadingInvoice(true)
         try {
             const res = await fetch(`${apiConnection}/${id}`)
             const result = await res.json()
@@ -93,12 +93,12 @@ const InvoiceProvider = ({children}) => {
             console.log(`Could not fetch this invoice!: ${id} error message: ${error}`);
         }
         finally {
-            setLoading(false)
+            setLoadingInvoice(false)
         }
     }
 
     const getInvoices = async () => {
-        setLoading(true)
+        setLoadingInvoice(true)
         try {
             const res = await fetch(apiConnection)
             const result = await res.json()
@@ -108,7 +108,7 @@ const InvoiceProvider = ({children}) => {
             console.log(`Error fetching invoices: ${err}`)
         }
         finally {
-            setLoading(false)
+            setLoadingInvoice(false)
         }
     }
     useEffect(() => {
@@ -116,7 +116,7 @@ const InvoiceProvider = ({children}) => {
     }, [])
 
   return (
-    <InvoiceContext.Provider value={{ invoices, invoice, postInvoice ,getInvoice, getInvoices, payInvoice ,loading }}>
+    <InvoiceContext.Provider value={{ invoices, invoice, postInvoice ,getInvoice, getInvoices, payInvoice ,loadingInvoice }}>
         {children}
     </InvoiceContext.Provider>
   )
